@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../componentes/cursos_recomendados.dart';
+//import '../componentes/cursos_recomendados.dart';
 
 class PantallaCursos extends StatelessWidget {
 
@@ -68,7 +68,7 @@ Widget cursosRecomendados(context){
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
-      CarouselCursos(),
+      //CarouselCursos(),
     ],
   );
 }
