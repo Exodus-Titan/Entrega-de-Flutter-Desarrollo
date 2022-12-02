@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import '../componentes/cursos_recomendados.dart';
+import '../componentes/cursos_recomendados.dart';
 
 class PantallaCursos extends StatelessWidget {
 
@@ -12,6 +12,7 @@ class PantallaCursos extends StatelessWidget {
             //customAppBar(),
             textsHeader(context),
             cursosRecomendados(context),
+            cursosRecientes(context),
           ],
         ),
       ),
@@ -55,8 +56,6 @@ Widget textsHeader(context) {
   );
 }
 
-
-
 Widget cursosRecomendados(context){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +67,31 @@ Widget cursosRecomendados(context){
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ),
-      //CarouselCursos(),
+      CarouselCursos(),
     ],
   );
+}
+
+Widget cursosRecientes(context){
+  return Column(
+    children: <Widget> [
+      Padding(
+        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget> [
+            Text(
+              'Reciente',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            Text(
+              'Ver todos',
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+          ],
+        ),
+      ),
+    ],
+  );  
 }
