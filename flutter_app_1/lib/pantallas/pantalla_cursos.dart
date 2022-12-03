@@ -7,17 +7,17 @@ class PantallaCursos extends StatelessWidget {
 
 // agregar lista para cursos recientes
 
-//agregar lista para cursos recomendados
+//agregarlista para cursos recomendados
 
 
   @override 
   Widget build (BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
       body: SafeArea(
         child: ListView(
           children: <Widget> [
-            //customAppBar(),
-            textsHeader(context),
+            body(context),
             cursosRecientes(context),
             cursosRecomendados(context),
           ],
@@ -27,41 +27,47 @@ class PantallaCursos extends StatelessWidget {
   }
 }
 
-/* Widget customAppBar() {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget> [
-        IconButton(
-          iconSize: 40.0,
-          icon: Image.asset('assets/imgs/menu.svg'),
-          onPressed: (){},
-        ),
-        IconButton(
-          iconSize: 40.0,
-          icon: Image.asset('assets/imgs/usuario.svg'),
-          onPressed: (){},
-        )
-      ],
+AppBar buildAppBar(){
+  return AppBar(
+    elevation: 0,
+    leading: IconButton(
+      icon: Image.asset('assets/imgs/menu.png', width: 25.0,), 
+      onPressed: null,
     ),
   );
-} */
-
-Widget textsHeader(context) {
-  return Padding(
-  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget> [
-      Text(
-        'Bienvenido a Corsi',
-        style: Theme.of(context).textTheme.headline1,
-      )
-    ],
-  ),
-  );
 }
+
+Widget body(context) {
+    Size size = MediaQuery.of(context).size;
+    return Column(
+      children: <Widget> [
+        Container(
+          height: size.height * 0.2,
+          child: Stack(
+            children: <Widget> [
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
+                height: size.height * 0.2 - 27,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF2196F3),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(36),
+                    bottomRight: Radius.circular(36),
+                  )
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget> [
+                    Text('¡Bienvenid@ a Corsi!', style: Theme.of(context).textTheme.headline1,),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 
 Widget cursosRecientes(context){
   return Column(

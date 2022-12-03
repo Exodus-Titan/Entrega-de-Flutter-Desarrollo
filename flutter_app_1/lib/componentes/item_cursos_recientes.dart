@@ -31,7 +31,7 @@ class ItemCursosRecientes extends StatelessWidget {
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
-    color: Theme.of(context).primaryColor,
+    color: Color(0xFF589FDE),
     borderRadius: BorderRadius.circular(10.0),
     boxShadow: const <BoxShadow> [
       BoxShadow(

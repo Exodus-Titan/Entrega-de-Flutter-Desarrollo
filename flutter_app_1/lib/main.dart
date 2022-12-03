@@ -16,12 +16,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF2196F3),
         accentColor: Color(0XFF030047),
         highlightColor: Color(0XFFB7B7D2),
-
         textTheme: const TextTheme(
           headline1: TextStyle(
-            fontSize: 36.0,
+            fontSize: 35.0,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF2196F3),
+            color: Color(0xFFFFFFFF),
           ),
           headline2: TextStyle(
             fontSize: 36.0,
