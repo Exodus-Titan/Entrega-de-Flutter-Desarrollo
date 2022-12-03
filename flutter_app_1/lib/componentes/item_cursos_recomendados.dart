@@ -78,7 +78,7 @@ Widget infoCursoRecomendado(context) {
         'José Hernandez', //this.curso.profesor
         style: TextStyle(
           fontSize: 16.0,
-          color: Color(0xFFD5D5E1),
+          color: Color(0xFFEAEAF0),
         ),
       ),
       SizedBox(height: 3.0),
@@ -86,7 +86,7 @@ Widget infoCursoRecomendado(context) {
         'Aprende a utilizar funciones y herramientas de este lenguaje de forma rápida y sencilla', //this.curso.descripcion
         style: TextStyle(
         fontSize: 12.0,
-        color: Color(0XFFB7B7D2),
+        color: Color(0xFFD2D2E9),
         ),
       ),
     ],

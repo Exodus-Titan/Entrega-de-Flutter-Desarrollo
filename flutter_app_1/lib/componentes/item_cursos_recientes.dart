@@ -78,7 +78,7 @@ Widget infoCursoReciente(context) {
         'Andrea Ramirez', //this.curso.profesor
         style: TextStyle(
           fontSize: 16.0,
-          color: Color(0xFFD5D5E1),
+          color: Color(0xFFEAEAF0),
         ),
       ),
       SizedBox(height: 3.0),
@@ -86,7 +86,7 @@ Widget infoCursoReciente(context) {
         'Utiliza las herramientas adecuadas para diseñar una interfaz que cubra las necesidades que tiene tu usuario potencial', //this.curso.descripcion
         style: TextStyle(
         fontSize: 12.0,
-        color: Color(0XFFB7B7D2),
+        color: Color(0xFFD2D2E9),
         ),
       ),
     ],
