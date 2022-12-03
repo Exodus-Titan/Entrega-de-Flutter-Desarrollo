@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pantalla_1/pantallas/pantalla_cursos.dart';
+//import 'package:flutter_pantalla_1/pantallas/pantalla_detalle_curso.dart';
 // import 'package:flutter_pantalla_1/pantallas/prueba_navegacion.dart';
 // import 'package:flutter_pantalla_1/pantallas/prueba_navegacion_usuario.dart';
 
