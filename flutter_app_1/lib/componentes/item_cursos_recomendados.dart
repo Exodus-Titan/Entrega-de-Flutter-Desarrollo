@@ -1,44 +1,65 @@
 import 'package:flutter/material.dart';
+import '../pantallas/prueba_navegacion_detalle_curso.dart';
+import 'like_curso.dart';
 
-class ItemCursosRecomendados extends StatelessWidget {
-  @override 
+class ItemCursosRecomendados extends StatefulWidget {
+  const ItemCursosRecomendados({Key? key}) : super(key: key);
+
+  @override
+  State<ItemCursosRecomendados> createState() => _ItemCursosRecomendadosState();
+}
+
+class _ItemCursosRecomendadosState extends State<ItemCursosRecomendados> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 25.0, bottom:20.0, top: 20.0),
-      child: Container(
-      decoration: boxDecoration(context),
-      child: Padding(
-      padding: const EdgeInsets.all(25.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget> [
-            cursoLogo(),
-            favoriteIcon(),
-          ],
-        ),
-        infoCursoRecomendado(context),
-        ],
-      ),
-    ),
-    ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return const NavegacionDetalleCurso();
+            },
+          ),
+        );
+      },
+      child: itemCursoRecomendado(context),
     );
   }
+}
+
+Widget itemCursoRecomendado(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
+    child: Container(
+      decoration: boxDecoration(context),
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                cursoLogo(),
+                like(), //metodo importado de la clase like_curso.dart
+              ],
+            ),
+            infoCursoRecomendado(context),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
     color: Color(0xFF67A7DF),
     borderRadius: BorderRadius.circular(10.0),
-    boxShadow: const <BoxShadow> [
+    boxShadow: const <BoxShadow>[
       BoxShadow(
-        color: Colors.black45,
-        offset: Offset(5.0, 5.0),
-        blurRadius: 10.0
-      ),
+          color: Colors.black45, offset: Offset(5.0, 5.0), blurRadius: 10.0),
     ],
   );
 }
@@ -69,7 +90,7 @@ Widget favoriteIcon() {
 Widget infoCursoRecomendado(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget> [
+    children: <Widget>[
       Text(
         'JavaScript', //this.curso.titulo
         style: Theme.of(context).textTheme.headline3,
@@ -85,8 +106,8 @@ Widget infoCursoRecomendado(context) {
       const Text(
         'Aprende a utilizar funciones y herramientas de este lenguaje de forma rápida y sencilla', //this.curso.descripcion
         style: TextStyle(
-        fontSize: 12.0,
-        color: Color(0xFFD2D2E9),
+          fontSize: 12.0,
+          color: Color(0xFFD2D2E9),
         ),
       ),
     ],

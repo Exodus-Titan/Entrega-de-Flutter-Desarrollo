@@ -1,3 +1,5 @@
+// NO FINALIZADO //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_pantalla_1/componentes/detalle_curso_lecciones.dart';
 import 'package:flutter_svg/flutter_svg.dart';

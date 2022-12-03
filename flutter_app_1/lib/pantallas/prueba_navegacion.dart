@@ -1,3 +1,5 @@
+// NO FINALIZADO //
+
 import 'package:flutter/material.dart';
 import 'prueba_navegacion_detalle_curso.dart';
 

@@ -1,3 +1,5 @@
+// NO FINALIZADO //
+
 import 'package:flutter/material.dart';
 
 class PantallaLeccion extends StatelessWidget {
