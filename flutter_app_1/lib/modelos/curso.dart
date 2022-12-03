@@ -1,9 +1,10 @@
 /* import './profesor.dart';
 
 class Curso {
-  String nombre;
+  String logoCurso;
+  String titulo;
   String descripcion;
   Profesor profesor;
 
-  Curso({this.nombre, this.descripcion, this.profesor})
+  Curso({required this.logoCurso, required this.titulo, required this.descripcion, required this.profesor})
 } */

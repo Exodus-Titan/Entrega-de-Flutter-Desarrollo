@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import '../componentes/cursos_recientes.dart';
 import '../componentes/cursos_recomendados.dart';
 
+
 class PantallaCursos extends StatelessWidget {
+
+// agregar lista para cursos recientes
+
+//agregar lista para cursos recomendados
+
 
   @override 
   Widget build (BuildContext context) {
@@ -11,8 +18,8 @@ class PantallaCursos extends StatelessWidget {
           children: <Widget> [
             //customAppBar(),
             textsHeader(context),
-            cursosRecomendados(context),
             cursosRecientes(context),
+            cursosRecomendados(context),
           ],
         ),
       ),
@@ -56,24 +63,9 @@ Widget textsHeader(context) {
   );
 }
 
-Widget cursosRecomendados(context){
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget> [
-      Padding(
-        padding: const EdgeInsets.only(left: 30.0),
-        child: Text(
-          'Para ti',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ),
-      CarouselCursos(),
-    ],
-  );
-}
-
 Widget cursosRecientes(context){
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget> [
       Padding(
         padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
@@ -92,6 +84,33 @@ Widget cursosRecientes(context){
           ],
         ),
       ),
+      CarouselCursosRecientes(),
     ],
-  );  
+  );
+}
+
+Widget cursosRecomendados(context){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget> [
+      Padding(
+        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget> [
+            Text(
+              'Para ti',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            Text(
+              'Ver más',
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+          ],
+        ),
+      ),
+      CarouselCursosRecomendados(),
+    ],
+  );
 }

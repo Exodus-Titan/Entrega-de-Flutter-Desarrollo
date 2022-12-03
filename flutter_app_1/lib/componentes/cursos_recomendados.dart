@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'item_cursos_recomendados.dart';
 
-class CarouselCursos extends StatelessWidget{
+class CarouselCursosRecomendados extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
     return CarouselSlider(
@@ -11,11 +12,11 @@ class CarouselCursos extends StatelessWidget{
         viewportFraction: 0.86,
         height:230.0,
       ),
-      items: <Widget>[
-        Container(margin: EdgeInsets.all(3.0), color: Colors.blue),
-        Container(margin: EdgeInsets.all(3.0), color: Colors.blue),
-        Container(margin: EdgeInsets.all(3.0), color: Colors.blue),
-        Container(margin: EdgeInsets.all(3.0), color: Colors.blue),
+      items: <Widget>[ //se elimina el widget y se agrega la lista de cursos
+        ItemCursosRecomendados(),
+        ItemCursosRecomendados(),
+        ItemCursosRecomendados(),
+        ItemCursosRecomendados(),
       ],
     );
   }
