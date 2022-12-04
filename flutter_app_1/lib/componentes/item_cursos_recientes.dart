@@ -40,6 +40,7 @@ Widget itemCursoReciente(BuildContext context) {
         padding: const EdgeInsets.all(25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +83,7 @@ Widget cursoLogo() {
       borderRadius: BorderRadius.circular(10.0),
       child: Image.asset(
         'assets/imgs/CursoUX.png', //this.curso.logoCurso
-        width: 100.0,
+        width: 130.0,
       ),
     ),
   );

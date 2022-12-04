@@ -12,7 +12,7 @@ class CarouselCursosRecientes extends StatelessWidget {
         enableInfiniteScroll: false,
         reverse: false,
         viewportFraction: 0.86,
-        height: 230.0,
+        height: 260.0,
       ),
       items: const <Widget>[
         //se elimina el widget y se agrega la lista de cursos
