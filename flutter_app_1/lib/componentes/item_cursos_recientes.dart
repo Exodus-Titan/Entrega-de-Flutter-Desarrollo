@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../pantallas/prueba_navegacion_detalle_curso.dart';
+import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
 
 class ItemCursosRecientes extends StatefulWidget {
@@ -13,18 +13,22 @@ class _ItemCursosRecientesState extends State<ItemCursosRecientes> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext context) {
-              return const NavegacionDetalleCurso();
-            },
-          ),
-        );
-      },
+      onTap: widgetOnTap(context),
       child: itemCursoReciente(context),
     );
   }
+}
+
+widgetOnTap(BuildContext context) {
+  return (() => {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return PantallaDetalleCurso();
+            },
+          ),
+        )
+      });
 }
 
 Widget itemCursoReciente(BuildContext context) {
@@ -107,7 +111,8 @@ Widget infoCursoReciente(context) {
         ),
       ),
       SizedBox(height: 5.0),
-      const Text(overflow: (TextOverflow.ellipsis),
+      const Text(
+        overflow: (TextOverflow.ellipsis),
         'Utiliza las herramientas adecuadas para diseñar una interfaz que cubra las necesidades que tiene tu usuario potencial', //this.curso.descripcion
         style: TextStyle(
           fontSize: 12.0,
