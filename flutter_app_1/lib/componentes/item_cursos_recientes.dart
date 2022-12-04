@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/API/API.dart';
+import 'package:flutter_pantalla_1/API/Dtos/curso_dto.dart';
 import '../pantallas/prueba_navegacion_detalle_curso.dart';
 import 'like_curso.dart';
 
