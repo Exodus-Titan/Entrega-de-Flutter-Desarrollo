@@ -56,9 +56,9 @@ Widget itemCursoRecomendado(BuildContext context) {
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
-    color: Color(0xFFFFFFFF),
+    color: const Color(0xFFFFFFFF),
     border: Border.all(
-      color: Color(0xFF6297C6),
+      color: const Color(0xFF6297C6),
       width: 2.5,
     ),
     borderRadius: BorderRadius.circular(10.0),
@@ -108,8 +108,9 @@ Widget infoCursoRecomendado(context) {
           color: Color(0xFF928F8F),
         ),
       ),
-      SizedBox(height: 5.0),
-      const Text(overflow: (TextOverflow.ellipsis),
+      const SizedBox(height: 5.0),
+      const Text(
+        overflow: (TextOverflow.ellipsis),
         'Aprende a utilizar funciones y herramientas de este lenguaje de forma rápida y sencilla', //this.curso.descripcion
         style: TextStyle(
           fontSize: 12.0,
