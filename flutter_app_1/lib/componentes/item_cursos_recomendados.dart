@@ -55,7 +55,11 @@ Widget itemCursoRecomendado(BuildContext context) {
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
-    color: Color(0xFF67A7DF),
+    color: Color(0xFFFFFFFF),
+    border: Border.all(
+      color: Color(0xFF6297C6),
+      width: 2.5,
+    ),
     borderRadius: BorderRadius.circular(10.0),
     boxShadow: const <BoxShadow>[
       BoxShadow(
@@ -74,7 +78,8 @@ Widget cursoLogo() {
       borderRadius: BorderRadius.circular(10.0),
       child: Image.asset(
         'assets/imgs/CursoJavaScript.png', //this.nombre.logoCurso
-        width: 60.0,
+        width: 100.0,
+        fit: BoxFit.cover,
       ),
     ),
   );
@@ -98,16 +103,16 @@ Widget infoCursoRecomendado(context) {
       const Text(
         'José Hernandez', //this.curso.profesor
         style: TextStyle(
-          fontSize: 16.0,
-          color: Color(0xFFEAEAF0),
+          fontSize: 13.0,
+          color: Color(0xFF928F8F),
         ),
       ),
-      SizedBox(height: 3.0),
-      const Text(
+      SizedBox(height: 5.0),
+      const Text(overflow: (TextOverflow.ellipsis),
         'Aprende a utilizar funciones y herramientas de este lenguaje de forma rápida y sencilla', //this.curso.descripcion
         style: TextStyle(
           fontSize: 12.0,
-          color: Color(0xFFD2D2E9),
+          color: Color(0xFF000000),
         ),
       ),
     ],

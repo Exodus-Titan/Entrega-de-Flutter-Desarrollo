@@ -55,7 +55,11 @@ Widget itemCursoReciente(BuildContext context) {
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
-    color: Color(0xFF589FDE),
+    color: Color(0xFFFFFFFF),
+    border: Border.all(
+      color: Color(0xFF528BBD),
+      width: 2.5,
+    ),
     borderRadius: BorderRadius.circular(10.0),
     boxShadow: const <BoxShadow>[
       BoxShadow(
@@ -74,7 +78,7 @@ Widget cursoLogo() {
       borderRadius: BorderRadius.circular(10.0),
       child: Image.asset(
         'assets/imgs/CursoUX.png', //this.curso.logoCurso
-        width: 60.0,
+        width: 100.0,
       ),
     ),
   );
@@ -98,16 +102,16 @@ Widget infoCursoReciente(context) {
       const Text(
         'Andrea Ramirez', //this.curso.profesor
         style: TextStyle(
-          fontSize: 16.0,
-          color: Color(0xFFEAEAF0),
+          fontSize: 13.0,
+          color: Color(0xFF928F8F),
         ),
       ),
-      SizedBox(height: 3.0),
-      const Text(
+      SizedBox(height: 5.0),
+      const Text(overflow: (TextOverflow.ellipsis),
         'Utiliza las herramientas adecuadas para diseñar una interfaz que cubra las necesidades que tiene tu usuario potencial', //this.curso.descripcion
         style: TextStyle(
           fontSize: 12.0,
-          color: Color(0xFFD2D2E9),
+          color: Color(0xFF000000),
         ),
       ),
     ],

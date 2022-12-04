@@ -74,7 +74,7 @@ Widget cursosRecientes(context){
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget> [
       Padding(
-        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
+        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -100,7 +100,7 @@ Widget cursosRecomendados(context){
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget> [
       Padding(
-        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 5.0, bottom: 15.0),
+        padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 20.0, bottom: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
