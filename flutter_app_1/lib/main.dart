@@ -12,14 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Corsi',
-      home: PantallaCursos(),
-      theme: ThemeData(
-        primaryColor: Color(0xFF2196F3),
-        accentColor: Color(0XFF030047),
-        highlightColor: Color(0XFFB7B7D2),
-        textTheme: const TextTheme(
+        debugShowCheckedModeBanner: false,
+        title: 'Corsi',
+        home: PantallaCursos(),
+        theme: ThemeData(
+          primaryColor: Color(0xFF2196F3),
+          accentColor: Color(0XFF030047),
+          highlightColor: Color(0XFFB7B7D2),
+          textTheme: const TextTheme(
             headline1: TextStyle(
               fontSize: 35.0,
               fontWeight: FontWeight.bold,
@@ -32,8 +32,13 @@ class MyApp extends StatelessWidget {
             ),
             headline3: TextStyle(
               fontSize: 21.0,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF589FDE),
+            ),
+            headline4: TextStyle(
+              fontSize: 20.0,
               fontWeight: FontWeight.w500,
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 0, 0),
             ),
             bodyText1: TextStyle(
               fontSize: 20.0,
@@ -43,9 +48,19 @@ class MyApp extends StatelessWidget {
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
               color: Color(0xFF2196F3),
-            )),
-      ),
-    );
+            ),
+            subtitle1: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w600,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            subtitle2: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w600,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+        ));
   }
 }
 
