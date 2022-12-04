@@ -25,7 +25,7 @@ widgetOnTap(BuildContext context) {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return PantallaDetalleCurso();
+              return const PantallaDetalleCurso();
             },
           ),
         )
@@ -61,9 +61,9 @@ Widget itemCursoReciente(BuildContext context) {
 
 BoxDecoration boxDecoration(context) {
   return BoxDecoration(
-    color: Color(0xFFFFFFFF),
+    color: const Color(0xFFFFFFFF),
     border: Border.all(
-      color: Color(0xFF528BBD),
+      color: const Color(0xFF528BBD),
       width: 2.5,
     ),
     borderRadius: BorderRadius.circular(10.0),
@@ -112,7 +112,7 @@ Widget infoCursoReciente(context) {
           color: Color(0xFF928F8F),
         ),
       ),
-      SizedBox(height: 5.0),
+      const SizedBox(height: 5.0),
       const Text(
         overflow: (TextOverflow.ellipsis),
         'Utiliza las herramientas adecuadas para diseñar una interfaz que cubra las necesidades que tiene tu usuario potencial', //this.curso.descripcion

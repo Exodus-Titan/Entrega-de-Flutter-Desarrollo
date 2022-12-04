@@ -5,20 +5,22 @@ import 'package:flutter_pantalla_1/pantallas/pantalla_cursos.dart';
 // import 'package:flutter_pantalla_1/pantallas/prueba_navegacion_usuario.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Corsi',
-        home: PantallaCursos(),
+        home: const PantallaCursos(),
         theme: ThemeData(
-          primaryColor: Color(0xFF2196F3),
-          accentColor: Color(0XFF030047),
-          highlightColor: Color(0XFFB7B7D2),
+          primaryColor: const Color(0xFF2196F3),
+          accentColor: const Color(0XFF030047),
+          highlightColor: const Color(0XFFB7B7D2),
           textTheme: const TextTheme(
             headline1: TextStyle(
               fontSize: 35.0,

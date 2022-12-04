@@ -1,6 +1,5 @@
 // NO FINALIZADO //
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 const int itemCount = 20;
