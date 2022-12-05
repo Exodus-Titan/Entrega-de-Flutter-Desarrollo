@@ -4,11 +4,10 @@ import '../API/iapi.dart';
 import 'package:http/http.dart' as http;
 import '../API/urls.dart';
 
-class Api extends IAPI{
-
+class Api extends IAPI {
   @override
-  Future<CursoDto?> getCursoEspecifico(int idDelCurso) async{
-    try{
+  Future<CursoDto?> getCursoEspecifico(int idDelCurso) async {
+    try {
       var url = Uri.parse(Urls.url + Urls.cursosEndPoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
@@ -16,7 +15,7 @@ class Api extends IAPI{
         print(curso.prof);
         return curso;
       }
-    }catch(e){
+    } catch (e) {
       var a = e.toString();
       log(int.parse(a));
     }
@@ -24,10 +23,8 @@ class Api extends IAPI{
   }
 
   @override
-  Future<List<CursoDto>?> getCursos() async{
-
-    try{
-
+  Future<List<CursoDto>?> getCursos() async {
+    try {
       var url = Uri.parse(Urls.url + Urls.cursosEndPoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
@@ -35,22 +32,16 @@ class Api extends IAPI{
 
         return cursos;
       }
-    }catch(e){
+    } catch (e) {
       var a = e.toString();
       log(int.parse(a));
     }
     return null;
-
   }
 
   @override
-  void getLecciones(int idDelCurso){
-
-  }
+  void getLecciones(int idDelCurso) {}
 
   @override
-  void getLeccionEspecifica(int idDelCurso, int idDeLaLeccion) {
-
-  }
-
+  void getLeccionEspecifica(int idDelCurso, int idDeLaLeccion) {}
 }

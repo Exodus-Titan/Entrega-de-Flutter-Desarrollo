@@ -1,9 +1,17 @@
-import 'package:flutter_pantalla_1/modelos/profesor/nombreProfesor.dart';
-import 'package:flutter_pantalla_1/modelos/idProfesor.dart';
+import 'package:flutter_pantalla_1/modelos/profesor/nombre_profesor.dart';
+import 'package:flutter_pantalla_1/modelos/id_profesor.dart';
 
 class Profesor {
-  idProfesor id;
-  nombreProfesor nombre;
+  IdProfesor id;
+  NombreProfesor nombre;
 
   Profesor({required this.id, required this.nombre});
+
+  String getId() {
+    return this.id.getId();
+  }
+
+  String getNombre() {
+    return this.nombre.getNombre();
+  }
 }

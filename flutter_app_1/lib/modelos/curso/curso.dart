@@ -1,15 +1,40 @@
-import 'package:flutter_pantalla_1/modelos/curso/logoCurso.dart';
-import 'package:flutter_pantalla_1/modelos/curso/tituloCurso.dart';
-import 'package:flutter_pantalla_1/modelos/curso/descripcionCurso.dart';
-import 'package:flutter_pantalla_1/modelos/idProfesor.dart';
-import 'package:flutter_pantalla_1/modelos/idCurso.dart';
+import 'package:flutter_pantalla_1/modelos/curso/logo_curso.dart';
+import 'package:flutter_pantalla_1/modelos/curso/titulo_curso.dart';
+import 'package:flutter_pantalla_1/modelos/curso/descripcion_curso.dart';
+import 'package:flutter_pantalla_1/modelos/id_profesor.dart';
+import 'package:flutter_pantalla_1/modelos/id_curso.dart';
 
 class Curso {
-  idCurso id;
-  logoCurso logo;
-  tituloCurso titulo;
-  descripcionCurso descripcion;
-  idProfesor profesor;
+  IdCurso id;
+  LogoCurso logo;
+  TituloCurso titulo;
+  DescripcionCurso descripcion;
+  IdProfesor profesor;
 
-  Curso({required this.id, required this.logo, required this.titulo, required this.descripcion, required this.profesor});
+  Curso(
+      {required this.id,
+      required this.logo,
+      required this.titulo,
+      required this.descripcion,
+      required this.profesor});
+
+  String getLogo() {
+    return this.logo.getLogo();
+  }
+
+  String getId() {
+    return this.id.getId();
+  }
+
+  String getTitulo() {
+    return this.titulo.getTitulo();
+  }
+
+  String getDescripcion() {
+    return this.descripcion.getDescripcion();
+  }
+
+  IdProfesor getIdProfesor() {
+    return this.profesor;
+  }
 }

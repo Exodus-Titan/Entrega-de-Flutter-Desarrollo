@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
+import '../../modelos/parameters_objects/info_curso_con_profesor.dart';
 
-Widget itemCursosRecientes(
-    String titulo, String profesor, String descripcion, context) {
+Widget itemCursosRecientes(InfoCursoConProfesor? info, context) {
   return GestureDetector(
     onTap: widgetOnTap(context),
-    child: itemCursoReciente(titulo, profesor, descripcion, context),
+    child: itemCursoReciente(info!.getTituloCurso(), info.getNombreProfesor(),
+        info.getDescripcionCurso(), context),
   );
 }
 

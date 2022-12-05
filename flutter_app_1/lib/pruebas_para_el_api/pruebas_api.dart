@@ -79,11 +79,11 @@ class _PruebaApiState extends State<PruebaApi> {
               itemBuilder: (_, i) {
                 return Transform.scale(
                   scale: i == _index ? 1 : 0.9,
-                  child: itemCursosRecientes(
-                      cursos![_index].titulo,
-                      cursos![_index].prof,
-                      cursos![_index].descripcion,
-                      context),
+                  // child: itemCursosRecientes( // Este es el 'bueno' (no este archivo, este child)
+                  //     cursos![_index].titulo,
+                  //     cursos![_index].prof,
+                  //     cursos![_index].descripcion,
+                  //     context),
                   // child: ItemCursosRecientes(),
                   // child: Card(
                   //   elevation: 6,
