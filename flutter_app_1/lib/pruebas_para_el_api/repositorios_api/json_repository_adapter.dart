@@ -1,0 +1,51 @@
+import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
+import '../../API/Dtos/curso_dto.dart';
+import 'package:flutter_pantalla_1/API/api.dart';
+import '../../modelos/curso/curso.dart';
+import '../../modelos/fabricas/fabrica_curso.dart';
+import '../../modelos/fabricas/fabrica_profesor.dart';
+import 'i_repositorio_curso_profesor.dart';
+
+class ApiJsonRepository implements IRepositorioCursoProfesor {
+  FabricaCurso fabricaCurso = FabricaCurso();
+  FabricaProfesor fabricaProfesor = FabricaProfesor();
+  List<Profesor>? profesoresAgg;
+  List<Curso>? cursosAgg;
+  List<CursoDto>? cursos;
+
+  @override
+  Future getData() async {
+    cursos = await Api().getCursos();
+    fabrica();
+  }
+
+  List<Curso>? fabrica() {
+    cursosAgg = [];
+    profesoresAgg = [];
+    for (int cont = 0; cont < cursos!.length; cont++) {
+      Profesor profe = fabricaProfesor.reconstruirProfesor(
+          cont.toString(), cursos![cont].prof);
+      profesoresAgg!.add(profe);
+      cursosAgg!.add(
+        fabricaCurso.reconstruirCurso(
+          cursos![cont].id,
+          cursos![cont].foto,
+          cursos![cont].titulo,
+          cursos![cont].descripcion,
+          profe.id.getId(),
+        ),
+      );
+    }
+    return cursosAgg;
+  }
+
+  @override
+  List<Curso>? getCursos() {
+    return cursosAgg;
+  }
+
+  @override
+  List<Profesor>? getProfesores() {
+    return profesoresAgg;
+  }
+}

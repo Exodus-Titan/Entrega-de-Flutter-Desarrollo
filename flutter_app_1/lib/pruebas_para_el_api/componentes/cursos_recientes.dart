@@ -6,6 +6,7 @@ import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
 import '../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
 import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../repositorios_api/json_repository_adapter.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
   const CarouselCursosRecientes({Key? key}) : super(key: key);
@@ -29,7 +30,8 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   }
 
   getData() async {
-    iterableCursos = await servicio.getTodosLosCursosConProfesores();
+    iterableCursos =
+        await servicio.getTodosLosCursosConProfesores(ApiJsonRepository());
     if (iterableCursos != null) {
       iteradorCursos = iterableCursos!.crearIterador();
       elementosIterador = iteradorCursos!.cantidadElementos();

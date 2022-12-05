@@ -8,20 +8,18 @@ import '../curso/titulo_curso.dart';
 import '../profesor/nombre_profesor.dart';
 import '../parameters_objects/info_curso_con_profesor.dart';
 import '../patron_iterador/iterado_generico/iterable_lista.dart';
-import '../../pruebas_para_el_api/adapdatores_api/json_api_adapter.dart';
+import '../../pruebas_para_el_api/repositorios_api/i_repositorio_curso_profesor.dart';
 
 class ServicioInfoCursoProfesor {
-  Future<IterableLista<InfoCursoConProfesor>>
-      getTodosLosCursosConProfesores() async {
-    ApiJsonAdapter adapter = ApiJsonAdapter();
+  Future<IterableLista<InfoCursoConProfesor>> getTodosLosCursosConProfesores(
+      IRepositorioCursoProfesor adaptadorCursoProfesor) async {
     List<Curso>? cursos;
     List<Profesor>? profesores;
     IterableLista<InfoCursoConProfesor> iterable = IterableLista();
 
-    await adapter.getData();
-    adapter.fabrica();
-    cursos = adapter.getCursos();
-    profesores = adapter.getProfesores();
+    await adaptadorCursoProfesor.getData();
+    cursos = adaptadorCursoProfesor.getCursos();
+    profesores = adaptadorCursoProfesor.getProfesores();
 
     for (int cont = 0; cont < cursos!.length; cont++) {
       iterable.add(
