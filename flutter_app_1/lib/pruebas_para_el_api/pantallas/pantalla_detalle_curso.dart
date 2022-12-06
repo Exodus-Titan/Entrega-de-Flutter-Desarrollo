@@ -41,9 +41,9 @@ PreferredSizeWidget? widgetAppBar(BuildContext context) {
       },
       icon: const Icon(Icons.arrow_back_ios),
     ),
-    actions: [
-      like(),
-    ],
+    // actions: [
+    //   like(false),
+    // ],
   );
 }
 

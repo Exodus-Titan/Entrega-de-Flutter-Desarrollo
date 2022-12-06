@@ -44,7 +44,7 @@ Widget itemCursoRecomendado(BuildContext context) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 cursoLogo(),
-                like(), //metodo importado de la clase like_curso.dart
+                likeSimple(), //metodo importado de la clase like_curso.dart
               ],
             ),
             infoCursoRecomendado(context),
