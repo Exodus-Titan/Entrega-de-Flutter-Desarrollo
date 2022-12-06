@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               color: Color(0xFF2196F3),
             ),
             headline3: TextStyle(
-              fontSize: 21.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.bold,
               color: Color(0xFF589FDE),
             ),

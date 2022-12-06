@@ -5,3 +5,9 @@
 	flutter pub add http
 	Si ya esta instalado mas no actualizado usar el siguiente comando en la misma direccion
 	flutter pub upgrade http
+
+	** Para la persistencia **
+	Dependencia shared_preferences ya instalada en el archivo pubspec.yaml: shared_preferences: ^2.0.15
+	https://pub.dev/packages/shared_preferences/install
+
+	
