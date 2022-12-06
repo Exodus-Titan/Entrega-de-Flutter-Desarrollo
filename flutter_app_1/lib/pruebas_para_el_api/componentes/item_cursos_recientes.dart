@@ -1,13 +1,23 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
 import '../../modelos/parameters_objects/info_curso_con_profesor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<bool> getdata(String idCurso) async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  bool b = (preferences.get('idCurso$idCurso') ?? false) as bool;
+  print('Get-$idCurso - booleano-$b');
+  return b;
+}
 
 Widget itemCursosRecientes(InfoCursoConProfesor? info, context) {
   return GestureDetector(
     onTap: widgetOnTap(context),
-    child: itemCursoReciente(info!.getTituloCurso(), info.getNombreProfesor(),
-        info.getDescripcionCurso(), context),
+    child: itemCursoReciente(info!.getIdCurso(), info.getTituloCurso(),
+        info.getNombreProfesor(), info.getDescripcionCurso(), context),
   );
 }
 
@@ -23,8 +33,8 @@ widgetOnTap(BuildContext context) {
       });
 }
 
-Widget itemCursoReciente(
-    String titulo, String profesor, String descripcion, BuildContext context) {
+Widget itemCursoReciente(String idCurso, String titulo, String profesor,
+    String descripcion, BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
     child: Container(
@@ -40,7 +50,10 @@ Widget itemCursoReciente(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 cursoLogo(),
-                like(), //metodo importado de la clase like_curso.dart
+                like(
+                    idCurso,
+                    getdata(
+                        idCurso)), //metodo importado de la clase like_curso.dart
               ],
             ),
             infoCursoReciente(titulo, profesor, descripcion, context),

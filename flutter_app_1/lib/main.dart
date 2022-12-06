@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_pantalla_1/pantallas/pantalla_cursos.dart';
 import 'package:flutter_pantalla_1/pruebas_para_el_api/pantallas/pantalla_cursos.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_pantalla_1/pruebas_para_el_api/pruebas_api.dart';
 // import 'package:flutter_pantalla_1/pantallas/pantalla_detalle_curso.dart';
 // import 'package:flutter_pantalla_1/pantallas/prueba_navegacion.dart';
@@ -10,8 +11,19 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // const MyApp({Key? key}) : super(key: key);
+
+  setPreferences() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {

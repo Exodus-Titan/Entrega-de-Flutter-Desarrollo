@@ -21,6 +21,10 @@ class InfoCursoConProfesor {
       required this.idProfesor,
       required this.nombreProfesor});
 
+  String getIdCurso() {
+    return idCurso.getId();
+  }
+
   String getTituloCurso() {
     return tituloCurso.getTitulo();
   }
