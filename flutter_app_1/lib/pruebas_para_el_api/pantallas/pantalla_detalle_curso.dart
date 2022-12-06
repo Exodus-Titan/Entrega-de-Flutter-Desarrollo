@@ -1,25 +1,30 @@
 // NO FINALIZADO //
 
 import 'package:flutter/material.dart';
-import '../componentes/like_curso.dart';
+// import '../componentes/like_curso.dart';
 
 class PantallaDetalleCurso extends StatelessWidget {
-  const PantallaDetalleCurso({Key? key}) : super(key: key);
+  final String tituloCurso;
+  final String descripcionCurso;
+  const PantallaDetalleCurso(this.tituloCurso, this.descripcionCurso,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: widgetAppBar(context),
+      appBar: widgetAppBar(tituloCurso, context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             widgetImage(),
-            widgetTituloCurso(context),
+            widgetTituloCurso(tituloCurso, context),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                widgetFlexible(context, widgetDescripcionCurso(context)),
+                widgetFlexible(
+                    context, widgetDescripcionCurso(descripcionCurso, context)),
                 widgetFlexible(context, widgetListaLecciones(context)),
               ],
             ),
@@ -30,10 +35,10 @@ class PantallaDetalleCurso extends StatelessWidget {
   }
 }
 
-PreferredSizeWidget? widgetAppBar(BuildContext context) {
+PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
   return AppBar(
     backgroundColor: const Color(0xFF2196F3),
-    title: const Text('[Curso]'),
+    title: Text(tituloCurso),
     automaticallyImplyLeading: false,
     leading: IconButton(
       onPressed: () {
@@ -66,24 +71,24 @@ Widget widgetFlexible(BuildContext context, Widget widget) {
   return Flexible(child: widget);
 }
 
-Widget widgetTituloCurso(BuildContext context) {
+Widget widgetTituloCurso(String tituloCurso, BuildContext context) {
   return Container(
     width: double.infinity,
     color: const Color(0xFF2196F3),
     padding: const EdgeInsets.fromLTRB(1.0, 5.0, 1.0, 10.0),
     child: Text(
-      '[Nombre del curso]',
+      tituloCurso,
       style: Theme.of(context).textTheme.headline1,
       textAlign: TextAlign.center,
     ),
   );
 }
 
-Widget widgetDescripcionCurso(BuildContext context) {
+Widget widgetDescripcionCurso(String descripcionCurso, BuildContext context) {
   return Container(
     padding: const EdgeInsets.fromLTRB(1.0, 0, 2.0, 0),
     child: Text(
-      '[Descripcion del cursoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo]',
+      'Descripcion del curso: \n$descripcionCurso',
       style: Theme.of(context).textTheme.subtitle1,
       textAlign: TextAlign.justify,
     ),
@@ -117,6 +122,7 @@ Widget widgetListaLecciones(BuildContext context) {
   return Container(
     padding: const EdgeInsets.fromLTRB(2.0, 0, 0, 0),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         widgetMaterialButton(
             Text(

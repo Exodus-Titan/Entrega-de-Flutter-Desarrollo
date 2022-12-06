@@ -15,18 +15,20 @@ Future<bool> getdata(String idCurso) async {
 
 Widget itemCursosRecientes(InfoCursoConProfesor? info, context) {
   return GestureDetector(
-    onTap: widgetOnTap(context),
+    onTap: widgetOnTap(info!.getIdCurso(), info.getTituloCurso(),
+        info.getNombreProfesor(), info.getDescripcionCurso(), context),
     child: itemCursoReciente(info!.getIdCurso(), info.getTituloCurso(),
         info.getNombreProfesor(), info.getDescripcionCurso(), context),
   );
 }
 
-widgetOnTap(BuildContext context) {
+widgetOnTap(String idCurso, String titulo, String profesor, String descripcion,
+    BuildContext context) {
   return (() => {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const PantallaDetalleCurso();
+              return PantallaDetalleCurso(titulo, descripcion);
             },
           ),
         )

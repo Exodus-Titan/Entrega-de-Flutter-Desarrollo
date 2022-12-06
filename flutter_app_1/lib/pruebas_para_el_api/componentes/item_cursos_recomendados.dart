@@ -18,7 +18,8 @@ class _ItemCursosRecomendadosState extends State<ItemCursosRecomendados> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const PantallaDetalleCurso();
+              return const PantallaDetalleCurso(
+                  '[Curso]', '[Descripcion del curso]');
             },
           ),
         );
