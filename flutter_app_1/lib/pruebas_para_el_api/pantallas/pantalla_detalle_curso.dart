@@ -1,7 +1,6 @@
 // NO FINALIZADO //
 
 import 'package:flutter/material.dart';
-// import '../componentes/like_curso.dart';
 
 class PantallaDetalleCurso extends StatelessWidget {
   final String tituloCurso;
