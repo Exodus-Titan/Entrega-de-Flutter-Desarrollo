@@ -17,7 +17,7 @@ Widget itemCursosRecientes(InfoCursoConProfesor? info, context) {
   return GestureDetector(
     onTap: widgetOnTap(info!.getIdCurso(), info.getTituloCurso(),
         info.getNombreProfesor(), info.getDescripcionCurso(), context),
-    child: itemCursoReciente(info!.getIdCurso(), info.getTituloCurso(),
+    child: itemCursoReciente(info.getIdCurso(), info.getTituloCurso(),
         info.getNombreProfesor(), info.getDescripcionCurso(), context),
   );
 }
