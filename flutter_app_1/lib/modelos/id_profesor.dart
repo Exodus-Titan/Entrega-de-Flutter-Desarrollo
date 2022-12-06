@@ -4,6 +4,6 @@ class IdProfesor {
   IdProfesor({required this.id});
 
   String getId() {
-    return this.id;
+    return id;
   }
 }

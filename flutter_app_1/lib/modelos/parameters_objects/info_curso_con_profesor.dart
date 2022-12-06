@@ -22,14 +22,14 @@ class InfoCursoConProfesor {
       required this.nombreProfesor});
 
   String getTituloCurso() {
-    return this.tituloCurso.getTitulo();
+    return tituloCurso.getTitulo();
   }
 
   String getDescripcionCurso() {
-    return this.descripcionCurso.getDescripcion();
+    return descripcionCurso.getDescripcion();
   }
 
   String getNombreProfesor() {
-    return this.nombreProfesor.getNombre();
+    return nombreProfesor.getNombre();
   }
 }

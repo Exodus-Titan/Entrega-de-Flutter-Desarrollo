@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../pantallas/prueba_navegacion_detalle_curso.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
 

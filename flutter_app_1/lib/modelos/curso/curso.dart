@@ -19,22 +19,22 @@ class Curso {
       required this.profesor});
 
   String getLogo() {
-    return this.logo.getLogo();
+    return logo.getLogo();
   }
 
   String getId() {
-    return this.id.getId();
+    return id.getId();
   }
 
   String getTitulo() {
-    return this.titulo.getTitulo();
+    return titulo.getTitulo();
   }
 
   String getDescripcion() {
-    return this.descripcion.getDescripcion();
+    return descripcion.getDescripcion();
   }
 
   IdProfesor getIdProfesor() {
-    return this.profesor;
+    return profesor;
   }
 }

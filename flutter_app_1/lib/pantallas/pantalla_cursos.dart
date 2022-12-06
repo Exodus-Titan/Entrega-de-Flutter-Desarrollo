@@ -42,7 +42,7 @@ Widget body(context) {
   Size size = MediaQuery.of(context).size;
   return Column(
     children: <Widget>[
-      Container(
+      SizedBox(
         height: size.height * 0.2,
         child: Stack(
           children: <Widget>[

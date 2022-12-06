@@ -12,7 +12,6 @@ class Api extends IAPI {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         CursoDto curso = cursoDtoFromJson(response.body)[0];
-        print(curso.prof);
         return curso;
       }
     } catch (e) {

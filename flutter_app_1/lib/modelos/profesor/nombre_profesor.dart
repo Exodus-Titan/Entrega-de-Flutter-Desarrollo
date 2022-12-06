@@ -4,6 +4,6 @@ class NombreProfesor {
   NombreProfesor({required this.nombre});
 
   String getNombre() {
-    return this.nombre;
+    return nombre;
   }
 }

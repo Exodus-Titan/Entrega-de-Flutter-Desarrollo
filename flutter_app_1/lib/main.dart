@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
         home: const PantallaCursos(),
         theme: ThemeData(
           primaryColor: const Color(0xFF2196F3),
-          accentColor: const Color(0XFF030047),
+          // accentColor: const Color(0XFF030047),
+          colorScheme: ColorScheme.fromSwatch()
+              .copyWith(secondary: const Color(0XFF030047)),
           highlightColor: const Color(0XFFB7B7D2),
           textTheme: const TextTheme(
             headline1: TextStyle(

@@ -8,10 +8,10 @@ class Profesor {
   Profesor({required this.id, required this.nombre});
 
   String getId() {
-    return this.id.getId();
+    return id.getId();
   }
 
   String getNombre() {
-    return this.nombre.getNombre();
+    return nombre.getNombre();
   }
 }

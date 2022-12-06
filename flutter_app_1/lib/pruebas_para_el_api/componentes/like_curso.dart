@@ -9,9 +9,9 @@ Widget like() {
     likeBuilder: (isLiked) {
       if (isLiked) {
         return const Icon(Icons.favorite, color: Color(0xFF2196F3), size: 30);
-      }
-      if (!isLiked) {
-        return const Icon(Icons.favorite_outline, color: Color(0xFF2196F3), size: 30);
+      } else {
+        return const Icon(Icons.favorite_outline,
+            color: Color(0xFF2196F3), size: 30);
       }
     },
   );

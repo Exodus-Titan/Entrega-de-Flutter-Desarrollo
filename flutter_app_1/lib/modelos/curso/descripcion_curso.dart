@@ -4,6 +4,6 @@ class DescripcionCurso {
   DescripcionCurso({required this.descripcion});
 
   String getDescripcion() {
-    return this.descripcion;
+    return descripcion;
   }
 }
