@@ -28,7 +28,7 @@ widgetOnTap(String idCurso, String titulo, String profesor, String descripcion,
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return PantallaDetalleCurso(titulo, descripcion);
+              return PantallaDetalleCurso(titulo, descripcion, profesor);
             },
           ),
         )

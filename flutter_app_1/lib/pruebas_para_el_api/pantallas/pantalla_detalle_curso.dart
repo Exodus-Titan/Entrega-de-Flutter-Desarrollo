@@ -4,14 +4,16 @@ import '../componentes/lecciones.dart';
 class PantallaDetalleCurso extends StatelessWidget {
   final String tituloCurso;
   final String descripcionCurso;
-  const PantallaDetalleCurso(this.tituloCurso, this.descripcionCurso,
+  final String profesor;
+  const PantallaDetalleCurso(
+      this.tituloCurso, this.descripcionCurso, this.profesor,
       {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: const Color(0xFF2196F3),
+      backgroundColor: const Color(0xFF2196F3),
       appBar: widgetAppBar(tituloCurso, context),
       body: SingleChildScrollView(
         child: Column(
@@ -42,11 +44,11 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
   );
 }
 
-Widget body(String tituloCurso, String descripcionCurso, BuildContext context) { 
+Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return SingleChildScrollView(
-    child: Column (
-      children: <Widget> [
+    child: Column(
+      children: <Widget>[
         SizedBox(
           height: size.height,
           child: Stack(
@@ -62,7 +64,7 @@ Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
                   ),
                 ),
                 child: Column(
-                  children: <Widget> [
+                  children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 90,
@@ -80,9 +82,8 @@ Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                  top: 10.0, bottom: 10.0),
-                  child: Column(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Text(
@@ -93,13 +94,16 @@ Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
                     Row(
                       children: <Widget>[
                         const SizedBox(),
-                        Expanded(child: Image.asset(
-                          'assets/imgs/CursoSinFondo.png',
-                          fit: BoxFit.fill,
-                          ),),
+                        Expanded(
+                          child: Image.asset(
+                            'assets/imgs/CursoSinFondo.png',
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ],
                     ),
-                  ],),
+                  ],
+                ),
               ),
             ],
           ),
