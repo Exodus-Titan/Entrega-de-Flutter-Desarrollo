@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'item_cursos_recientes.dart';
@@ -7,6 +9,7 @@ import '../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
 import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../repositorios_api/json_repository_adapter.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
   const CarouselCursosRecientes({Key? key}) : super(key: key);
@@ -22,11 +25,35 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   IteradorLista<InfoCursoConProfesor>? iteradorCursos;
   int elementosIterador = 0;
   var isLoaded = false;
+  late StreamSubscription subscription;
+
+  Future<void> verificarConexion() async {
+    var result = await Connectivity().checkConnectivity();
+
+    if ((result == ConnectivityResult.mobile) ||
+        (result == ConnectivityResult.wifi)) {}
+  }
 
   @override
   void initState() {
+    verificarConexion();
+
+    subscription = Connectivity().onConnectivityChanged.listen((event) async {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Conexión a internet establecida'),
+        ),
+      );
+      await getData();
+    });
     super.initState();
     getData();
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
   }
 
   getData() async {
