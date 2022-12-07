@@ -64,20 +64,9 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor,
                     topRight: Radius.circular(24),
                   ),
                 ),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.only(
-                        top: 120,
-                        left: 20,
-                        right: 20,
-                      ),
-                    ),
-                  ],
-                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                padding: const EdgeInsets.only(left: 10, right: 10, top: 10.0, bottom: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
