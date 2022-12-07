@@ -27,11 +27,13 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   var isLoaded = false;
   late StreamSubscription subscription;
 
-  Future<void> verificarConexion() async {
+  Future<bool> verificarConexion() async {
     var result = await Connectivity().checkConnectivity();
-
     if ((result == ConnectivityResult.mobile) ||
-        (result == ConnectivityResult.wifi)) {}
+        (result == ConnectivityResult.wifi)) {
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -39,15 +41,23 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     verificarConexion();
 
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Conexión a internet establecida'),
-        ),
-      );
-      await getData();
+      if (await verificarConexion()) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Conexión a internet establecida'),
+          ),
+        );
+        await getData();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Sin conexión a internet'),
+          ),
+        );
+      }
     });
     super.initState();
-    getData();
+    // getData();
   }
 
   @override
