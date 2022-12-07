@@ -2,11 +2,10 @@ import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
 import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
 import 'package:flutter_pantalla_1/data/ModeloTamporal/leccionTemporal.dart';
 import 'package:moor_flutter/moor_flutter.dart';
-import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
 
 
 
-part 'corseibd.g.dart';
+part 'moor_db.g.dart';
 
 class MoorCurso extends Table {
   IntColumn get BDid => integer().autoIncrement()();
@@ -42,57 +41,62 @@ class CorsiDataBase extends _$CorsiDataBase{
 }
 
 @UseDao(tables: [MoorCurso])
-class CursoDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+class CursoDao extends DatabaseAccessor<CorsiDataBase> with _$CursoDaoMixin {
   final CorsiDataBase db;
   CursoDao(this.db) : super(db);
 
   Future<List<MoorCursoData>> obtenerTodosLosCursos() => select(moorCurso).get();
 
   Stream<List<CursoTemp>> verTodosLosCursos() {
-
-  } //no c si lo vaya a poner al final ni c lo q hace xd
+    return select(moorCurso)
+        .watch()
+        .map((rows) {
+      final cursos = <CursoTemp>[];
+      rows.forEach((row) {
+        final recipe = moorCursoToCurso(row);
+      },);
+      return cursos;
+    },);
+  }
 
   Future<List<MoorCursoData>> buscarCursoPorId(int id) => (select(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).get();
 
   Future<int> insertarCurso(Insertable<MoorCursoData> curso) => into(moorCurso).insert(curso);
 
-  Future deleteCurso(int id) => Future.value((delete(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).go());
+  //Future deleteCurso(int id) => Future.value((delete(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).go());
 }
 
 @UseDao(tables: [MoorLeccion])
-class LeccionDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+class LeccionDao extends DatabaseAccessor<CorsiDataBase> with _$LeccionDaoMixin {
   final CorsiDataBase db;
   LeccionDao(this.db) : super(db);
 
   Future<List<MoorLeccionData>> obtenerTodasLasLecciones() => select(moorLeccion).get();
 
-  Stream<List<LeccionTemp>> verTodasLasLecciones() {
-
-  } //no c si lo vaya a poner al final ni c lo q hace xd
+  //Stream<List<LeccionTemp>> verTodasLasLecciones() {} //no c si lo vaya a poner al final ni c lo q hace xd
 
   Future<List<MoorLeccionData>> buscarLeccionPorId(int id) => (select(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).get();
 
   Future<int> insertarLeccion(Insertable<MoorLeccionData> leccion) => into(moorLeccion).insert(leccion);
 
-  Future deleteLeccion(int id) => Future.value((delete(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).go());
+
+  //Future deleteLeccion(int id) => Future.value((delete(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).go());
 }
 
 @UseDao(tables: [MoorUsuario])
-class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$UsuarioDaoMixin {
   final CorsiDataBase db;
   UsuarioDao(this.db) : super(db);
 
   Future<List<MoorUsuarioData>> obtenerTodosLosUsuarios() => select(moorUsuario).get();
 
-  Stream<List<Usuario>> verTodosLosUsuarios() {
-
-  } //no c si lo vaya a poner al final ni c lo q hace xd
+  //Stream<List<Usuario>> verTodosLosUsuarios() {} //no c si lo vaya a poner al final ni c lo q hace xd
 
   Future<List<MoorUsuarioData>> buscarUsuarioPorId(int id) => (select(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).get();
 
   Future<int> insertarUsuario(Insertable<MoorUsuarioData> usuario) => into(moorUsuario).insert(usuario);
 
-  Future deleteUsuario(int id) => Future.value((delete(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).go());
+  //Future deleteUsuario(int id) => Future.value((delete(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).go());
 }
 
 CursoTemp moorCursoToCurso(MoorCursoData curso) {
@@ -102,7 +106,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo,
       titulo: curso.titulo,
       descripcion: curso.descripcion,
-      profesor: curso.profesor
+      profesor: curso.nombreProf
   );
 }
 
@@ -112,7 +116,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo ?? '',
       titulo: curso.titulo ?? '',
       descripcion: curso.descripcion ?? '',
-      profesor: curso.profesor ?? '',
+      nombreProf: curso.profesor ?? '',
     );
   }
 
@@ -121,7 +125,8 @@ LeccionTemp moorLeccionToLeccion(MoorLeccionData leccion) {
       BDid: leccion.BDid,
       idLeccion: leccion.idCurso,
       titulo: leccion.titulo,
-      descripcion: leccion.descripcion
+      descripcion: leccion.descripcion,
+      idCurso: leccion.idCurso
   );
 }
 
@@ -130,6 +135,7 @@ Insertable<MoorLeccionData> leccionToInsertableMoorLeccion (LeccionTemp leccion)
     idLeccion: leccion.idLeccion ?? 0,
     titulo: leccion.titulo ?? '',
     descripcion: leccion.descripcion ?? '',
+    idCurso: leccion.idCurso ?? 0,
   );
 }
 
@@ -137,14 +143,15 @@ UsuarioTemp moorUsuarioToUsuario(MoorUsuarioData usuario) {
   return UsuarioTemp(
       BDid: usuario.BDid,
       idProf: usuario.idProf,
-      nombre: usuario.nombre,
+      nombre: usuario.nombreProf,
   );
 }
 
 Insertable<MoorUsuarioData> usuarioToInsertableMoorUsuario (UsuarioTemp usuario){
   return MoorUsuarioCompanion.insert(
+    BDid: usuario.BDid,
     idProf: usuario.idProf ?? 0,
-    nombre: usuario.nombre ?? '',
+    nombreProf: usuario.nombre ?? '',
   );
 }
 
