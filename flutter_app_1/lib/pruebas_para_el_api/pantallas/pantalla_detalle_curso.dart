@@ -19,7 +19,7 @@ class PantallaDetalleCurso extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            body(tituloCurso, descripcionCurso, context),
+            body(tituloCurso, descripcionCurso, profesor, context),
           ],
         ),
       ),
@@ -44,7 +44,7 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
   );
 }
 
-Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
+Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return SingleChildScrollView(
     child: Column(
@@ -92,7 +92,12 @@ Widget body(String tituloCurso, String descripcionCurso, BuildContext context) {
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     Row(
-                      children: <Widget>[
+                      children: <Widget>[                        
+                        Text(
+                          profesor,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
                         const SizedBox(),
                         Expanded(
                           child: Image.asset(
