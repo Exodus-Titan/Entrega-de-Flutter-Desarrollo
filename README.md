@@ -10,4 +10,6 @@
 	Dependencia shared_preferences ya instalada en el archivo pubspec.yaml: shared_preferences: ^2.0.15
 	https://pub.dev/packages/shared_preferences/install
 
-	
+	** Para el control/registro a la conexión a internet **
+	Dependencia connectivity_plus ya instalada en el archivo pubsec.yaml: connectivity_plus: ^3.0.2
+	https://pub.dev/packages/connectivity_plus/install
