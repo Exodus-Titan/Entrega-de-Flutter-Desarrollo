@@ -3,7 +3,7 @@ import 'dart:html';
 class CursoTemp {
   int BDid;
   int idCurso;
-  Blob logo;
+  String logo;
   String titulo;
   String descripcion;
   String profesor;

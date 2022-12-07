@@ -212,7 +212,7 @@ packages:
     source: hosted
     version: "1.7.1"
   drift_dev:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: drift_dev
       url: "https://pub.dartlang.org"

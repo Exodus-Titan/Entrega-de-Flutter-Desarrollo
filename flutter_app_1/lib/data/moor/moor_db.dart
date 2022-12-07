@@ -6,12 +6,12 @@ import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
 
 
 
-part 'CorsiBD.g.dart';
+part 'corseibd.g.dart';
 
 class MoorCurso extends Table {
   IntColumn get BDid => integer().autoIncrement()();
   IntColumn get idCurso => integer()();
-  BlobColumn get logo => blob()();
+  TextColumn get logo => text()();
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
   TextColumn get nombreProf => text()();
@@ -23,7 +23,6 @@ class MoorLeccion extends Table{
   IntColumn get idLeccion => integer()();
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
-
   IntColumn get idCurso => integer()(); //Aqui debe haber una FK
 }
 
@@ -49,13 +48,15 @@ class CursoDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
 
   Future<List<MoorCursoData>> obtenerTodosLosCursos() => select(moorCurso).get();
 
-  //Stream<List<Curso>> verTodosLosCursos() {} no c si lo vaya a poner al final ni c lo q hace xd
+  Stream<List<CursoTemp>> verTodosLosCursos() {
+
+  } //no c si lo vaya a poner al final ni c lo q hace xd
 
   Future<List<MoorCursoData>> buscarCursoPorId(int id) => (select(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).get();
 
   Future<int> insertarCurso(Insertable<MoorCursoData> curso) => into(moorCurso).insert(curso);
 
-  //Delete no se necesitan
+  Future deleteCurso(int id) => Future.value((delete(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).go());
 }
 
 @UseDao(tables: [MoorLeccion])
@@ -65,13 +66,15 @@ class LeccionDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
 
   Future<List<MoorLeccionData>> obtenerTodasLasLecciones() => select(moorLeccion).get();
 
-  //Stream<List<Leccion>> verTodasLasLecciones() {} no c si lo vaya a poner al final ni c lo q hace xd
+  Stream<List<LeccionTemp>> verTodasLasLecciones() {
+
+  } //no c si lo vaya a poner al final ni c lo q hace xd
 
   Future<List<MoorLeccionData>> buscarLeccionPorId(int id) => (select(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).get();
 
   Future<int> insertarLeccion(Insertable<MoorLeccionData> leccion) => into(moorLeccion).insert(leccion);
 
-  //Delete no se necesitan
+  Future deleteLeccion(int id) => Future.value((delete(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).go());
 }
 
 @UseDao(tables: [MoorUsuario])
@@ -81,13 +84,15 @@ class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
 
   Future<List<MoorUsuarioData>> obtenerTodosLosUsuarios() => select(moorUsuario).get();
 
-  //Stream<List<Usuario>> verTodosLosUsuarios() {} no c si lo vaya a poner al final ni c lo q hace xd
+  Stream<List<Usuario>> verTodosLosUsuarios() {
+
+  } //no c si lo vaya a poner al final ni c lo q hace xd
 
   Future<List<MoorUsuarioData>> buscarUsuarioPorId(int id) => (select(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).get();
 
   Future<int> insertarUsuario(Insertable<MoorUsuarioData> usuario) => into(moorUsuario).insert(usuario);
 
-//Delete no se necesitan
+  Future deleteUsuario(int id) => Future.value((delete(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).go());
 }
 
 CursoTemp moorCursoToCurso(MoorCursoData curso) {
