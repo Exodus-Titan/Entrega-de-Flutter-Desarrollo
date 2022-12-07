@@ -50,7 +50,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildC
     child: Column(
       children: <Widget>[
         SizedBox(
-          height: size.height,
+          height: 800, //size.height,
           child: Stack(
             children: <Widget>[
               Container(
@@ -67,7 +67,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildC
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: 90,
+                        top: 120,
                         left: 20,
                         right: 20,
                       ),
@@ -91,18 +91,18 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildC
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headline5,
                     ),
+                    Text(
+                      profesor,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
                     Row(
                       children: <Widget>[                        
-                        Text(
-                          profesor,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
                         const SizedBox(),
                         Expanded(
                           child: Image.asset(
                             'assets/imgs/CursoSinFondo.png',
-                            fit: BoxFit.fill,
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
                       ],
