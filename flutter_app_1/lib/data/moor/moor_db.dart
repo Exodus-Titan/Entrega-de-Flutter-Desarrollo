@@ -13,7 +13,7 @@ class MoorCurso extends Table {
   TextColumn get logo => text()();
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
-  TextColumn get nombreProf => text()();
+  IntColumn get idProf => integer()();
 
 }
 
@@ -106,7 +106,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo,
       titulo: curso.titulo,
       descripcion: curso.descripcion,
-      profesor: curso.nombreProf
+      idProf: curso.idProf
   );
 }
 
@@ -116,7 +116,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo ?? '',
       titulo: curso.titulo ?? '',
       descripcion: curso.descripcion ?? '',
-      nombreProf: curso.profesor ?? '',
+      idProf: curso.idProf ?? 0,
     );
   }
 

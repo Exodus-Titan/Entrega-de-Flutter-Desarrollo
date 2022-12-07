@@ -13,14 +13,14 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
   final String logo;
   final String titulo;
   final String descripcion;
-  final String nombreProf;
+  final int idProf;
   MoorCursoData(
       {required this.BDid,
       required this.idCurso,
       required this.logo,
       required this.titulo,
       required this.descripcion,
-      required this.nombreProf});
+      required this.idProf});
   factory MoorCursoData.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
@@ -36,8 +36,8 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}titulo'])!,
       descripcion: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}descripcion'])!,
-      nombreProf: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}nombre_prof'])!,
+      idProf: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}id_prof'])!,
     );
   }
   @override
@@ -48,7 +48,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
     map['logo'] = Variable<String>(logo);
     map['titulo'] = Variable<String>(titulo);
     map['descripcion'] = Variable<String>(descripcion);
-    map['nombre_prof'] = Variable<String>(nombreProf);
+    map['id_prof'] = Variable<int>(idProf);
     return map;
   }
 
@@ -59,7 +59,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       logo: Value(logo),
       titulo: Value(titulo),
       descripcion: Value(descripcion),
-      nombreProf: Value(nombreProf),
+      idProf: Value(idProf),
     );
   }
 
@@ -72,7 +72,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       logo: serializer.fromJson<String>(json['logo']),
       titulo: serializer.fromJson<String>(json['titulo']),
       descripcion: serializer.fromJson<String>(json['descripcion']),
-      nombreProf: serializer.fromJson<String>(json['nombreProf']),
+      idProf: serializer.fromJson<int>(json['idProf']),
     );
   }
   @override
@@ -84,7 +84,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       'logo': serializer.toJson<String>(logo),
       'titulo': serializer.toJson<String>(titulo),
       'descripcion': serializer.toJson<String>(descripcion),
-      'nombreProf': serializer.toJson<String>(nombreProf),
+      'idProf': serializer.toJson<int>(idProf),
     };
   }
 
@@ -94,14 +94,14 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           String? logo,
           String? titulo,
           String? descripcion,
-          String? nombreProf}) =>
+          int? idProf}) =>
       MoorCursoData(
         BDid: BDid ?? this.BDid,
         idCurso: idCurso ?? this.idCurso,
         logo: logo ?? this.logo,
         titulo: titulo ?? this.titulo,
         descripcion: descripcion ?? this.descripcion,
-        nombreProf: nombreProf ?? this.nombreProf,
+        idProf: idProf ?? this.idProf,
       );
   @override
   String toString() {
@@ -111,14 +111,14 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           ..write('logo: $logo, ')
           ..write('titulo: $titulo, ')
           ..write('descripcion: $descripcion, ')
-          ..write('nombreProf: $nombreProf')
+          ..write('idProf: $idProf')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode =>
-      Object.hash(BDid, idCurso, logo, titulo, descripcion, nombreProf);
+      Object.hash(BDid, idCurso, logo, titulo, descripcion, idProf);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -128,7 +128,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           other.logo == this.logo &&
           other.titulo == this.titulo &&
           other.descripcion == this.descripcion &&
-          other.nombreProf == this.nombreProf);
+          other.idProf == this.idProf);
 }
 
 class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
@@ -137,14 +137,14 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
   final Value<String> logo;
   final Value<String> titulo;
   final Value<String> descripcion;
-  final Value<String> nombreProf;
+  final Value<int> idProf;
   const MoorCursoCompanion({
     this.BDid = const Value.absent(),
     this.idCurso = const Value.absent(),
     this.logo = const Value.absent(),
     this.titulo = const Value.absent(),
     this.descripcion = const Value.absent(),
-    this.nombreProf = const Value.absent(),
+    this.idProf = const Value.absent(),
   });
   MoorCursoCompanion.insert({
     this.BDid = const Value.absent(),
@@ -152,19 +152,19 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     required String logo,
     required String titulo,
     required String descripcion,
-    required String nombreProf,
+    required int idProf,
   })  : idCurso = Value(idCurso),
         logo = Value(logo),
         titulo = Value(titulo),
         descripcion = Value(descripcion),
-        nombreProf = Value(nombreProf);
+        idProf = Value(idProf);
   static Insertable<MoorCursoData> custom({
     Expression<int>? BDid,
     Expression<int>? idCurso,
     Expression<String>? logo,
     Expression<String>? titulo,
     Expression<String>? descripcion,
-    Expression<String>? nombreProf,
+    Expression<int>? idProf,
   }) {
     return RawValuesInsertable({
       if (BDid != null) 'b_did': BDid,
@@ -172,7 +172,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
       if (logo != null) 'logo': logo,
       if (titulo != null) 'titulo': titulo,
       if (descripcion != null) 'descripcion': descripcion,
-      if (nombreProf != null) 'nombre_prof': nombreProf,
+      if (idProf != null) 'id_prof': idProf,
     });
   }
 
@@ -182,14 +182,14 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
       Value<String>? logo,
       Value<String>? titulo,
       Value<String>? descripcion,
-      Value<String>? nombreProf}) {
+      Value<int>? idProf}) {
     return MoorCursoCompanion(
       BDid: BDid ?? this.BDid,
       idCurso: idCurso ?? this.idCurso,
       logo: logo ?? this.logo,
       titulo: titulo ?? this.titulo,
       descripcion: descripcion ?? this.descripcion,
-      nombreProf: nombreProf ?? this.nombreProf,
+      idProf: idProf ?? this.idProf,
     );
   }
 
@@ -211,8 +211,8 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     if (descripcion.present) {
       map['descripcion'] = Variable<String>(descripcion.value);
     }
-    if (nombreProf.present) {
-      map['nombre_prof'] = Variable<String>(nombreProf.value);
+    if (idProf.present) {
+      map['id_prof'] = Variable<int>(idProf.value);
     }
     return map;
   }
@@ -225,7 +225,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
           ..write('logo: $logo, ')
           ..write('titulo: $titulo, ')
           ..write('descripcion: $descripcion, ')
-          ..write('nombreProf: $nombreProf')
+          ..write('idProf: $idProf')
           ..write(')'))
         .toString();
   }
@@ -265,14 +265,14 @@ class $MoorCursoTable extends MoorCurso
   late final GeneratedColumn<String?> descripcion = GeneratedColumn<String?>(
       'descripcion', aliasedName, false,
       type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _nombreProfMeta = const VerificationMeta('nombreProf');
+  final VerificationMeta _idProfMeta = const VerificationMeta('idProf');
   @override
-  late final GeneratedColumn<String?> nombreProf = GeneratedColumn<String?>(
-      'nombre_prof', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<int?> idProf = GeneratedColumn<int?>(
+      'id_prof', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [BDid, idCurso, logo, titulo, descripcion, nombreProf];
+      [BDid, idCurso, logo, titulo, descripcion, idProf];
   @override
   String get aliasedName => _alias ?? 'moor_curso';
   @override
@@ -312,13 +312,11 @@ class $MoorCursoTable extends MoorCurso
     } else if (isInserting) {
       context.missing(_descripcionMeta);
     }
-    if (data.containsKey('nombre_prof')) {
-      context.handle(
-          _nombreProfMeta,
-          nombreProf.isAcceptableOrUnknown(
-              data['nombre_prof']!, _nombreProfMeta));
+    if (data.containsKey('id_prof')) {
+      context.handle(_idProfMeta,
+          idProf.isAcceptableOrUnknown(data['id_prof']!, _idProfMeta));
     } else if (isInserting) {
-      context.missing(_nombreProfMeta);
+      context.missing(_idProfMeta);
     }
     return context;
   }
