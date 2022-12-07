@@ -66,7 +66,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10.0, bottom: 10.0),
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 10.0, bottom: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -107,7 +107,7 @@ Widget leccionCurso(context) {
     children: <Widget>[
       Padding(
         padding: const EdgeInsets.only(
-            left: 20.0, right: 20.0, top: 30.0, bottom: 5.0),
+          top: 30.0, bottom: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
