@@ -1,14 +1,17 @@
+import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
+import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
+import 'package:flutter_pantalla_1/data/ModeloTamporal/leccionTemporal.dart';
 import 'package:moor_flutter/moor_flutter.dart';
-import 'package:flutter_pantalla_1/modelos/curso/curso.dart';
 import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
 
 
-part 'moor_bd.g.dart';
+
+part 'CorsiBD.g.dart';
 
 class MoorCurso extends Table {
   IntColumn get BDid => integer().autoIncrement()();
   IntColumn get idCurso => integer()();
-  BlobColumn get foto => blob()();
+  BlobColumn get logo => blob()();
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
   TextColumn get nombreProf => text()();
@@ -31,9 +34,112 @@ class MoorUsuario extends Table{
 }
 
 
-@UseMoor(tables: [MoorCurso, MoorLeccion, MoorUsuario], daos: [])  RecipeDatabase()
-// TODO: Add RecipeDao here
-// TODO: Add IngredientDao
-// TODO: Add moorRecipeToRecipe here
-// TODO: Add MoorRecipeData here
-// TODO: Add moorIngredientToIngredient and MoorIngredientCompanion here
+@UseMoor(tables: [MoorCurso, MoorLeccion, MoorUsuario], daos: [CursoDao, LeccionDao, UsuarioDao])
+class CorsiDataBase extends _$CorsiDataBase{
+  CorsiDataBase()
+    :super(FlutterQueryExecutor.inDatabaseFolder(path: 'corsi.sqlite', logStatements:  true));
+  @override
+  int get schemaVersion => 1;
+}
+
+@UseDao(tables: [MoorCurso])
+class CursoDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+  final CorsiDataBase db;
+  CursoDao(this.db) : super(db);
+
+  Future<List<MoorCursoData>> obtenerTodosLosCursos() => select(moorCurso).get();
+
+  //Stream<List<Curso>> verTodosLosCursos() {} no c si lo vaya a poner al final ni c lo q hace xd
+
+  Future<List<MoorCursoData>> buscarCursoPorId(int id) => (select(moorCurso)..where((tbl) => tbl.idCurso.equals(id))).get();
+
+  Future<int> insertarCurso(Insertable<MoorCursoData> curso) => into(moorCurso).insert(curso);
+
+  //Delete no se necesitan
+}
+
+@UseDao(tables: [MoorLeccion])
+class LeccionDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+  final CorsiDataBase db;
+  LeccionDao(this.db) : super(db);
+
+  Future<List<MoorLeccionData>> obtenerTodasLasLecciones() => select(moorLeccion).get();
+
+  //Stream<List<Leccion>> verTodasLasLecciones() {} no c si lo vaya a poner al final ni c lo q hace xd
+
+  Future<List<MoorLeccionData>> buscarLeccionPorId(int id) => (select(moorLeccion)..where((tbl) => tbl.idLeccion.equals(id))).get();
+
+  Future<int> insertarLeccion(Insertable<MoorLeccionData> leccion) => into(moorLeccion).insert(leccion);
+
+  //Delete no se necesitan
+}
+
+@UseDao(tables: [MoorUsuario])
+class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$CorsiDataBase {
+  final CorsiDataBase db;
+  UsuarioDao(this.db) : super(db);
+
+  Future<List<MoorUsuarioData>> obtenerTodosLosUsuarios() => select(moorUsuario).get();
+
+  //Stream<List<Usuario>> verTodosLosUsuarios() {} no c si lo vaya a poner al final ni c lo q hace xd
+
+  Future<List<MoorUsuarioData>> buscarUsuarioPorId(int id) => (select(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).get();
+
+  Future<int> insertarUsuario(Insertable<MoorUsuarioData> usuario) => into(moorUsuario).insert(usuario);
+
+//Delete no se necesitan
+}
+
+CursoTemp moorCursoToCurso(MoorCursoData curso) {
+  return CursoTemp(
+      BDid: curso.BDid,
+      idCurso: curso.idCurso,
+      logo: curso.logo,
+      titulo: curso.titulo,
+      descripcion: curso.descripcion,
+      profesor: curso.profesor
+  );
+}
+
+  Insertable<MoorCursoData> cursoToInsertableMoorCurso (CursoTemp curso){
+    return MoorCursoCompanion.insert(
+      idCurso: curso.idCurso ?? 0,
+      logo: curso.logo ?? '',
+      titulo: curso.titulo ?? '',
+      descripcion: curso.descripcion ?? '',
+      profesor: curso.profesor ?? '',
+    );
+  }
+
+LeccionTemp moorLeccionToLeccion(MoorLeccionData leccion) {
+  return LeccionTemp(
+      BDid: leccion.BDid,
+      idLeccion: leccion.idCurso,
+      titulo: leccion.titulo,
+      descripcion: leccion.descripcion
+  );
+}
+
+Insertable<MoorLeccionData> leccionToInsertableMoorLeccion (LeccionTemp leccion){
+  return MoorLeccionCompanion.insert(
+    idLeccion: leccion.idLeccion ?? 0,
+    titulo: leccion.titulo ?? '',
+    descripcion: leccion.descripcion ?? '',
+  );
+}
+
+UsuarioTemp moorUsuarioToUsuario(MoorUsuarioData usuario) {
+  return UsuarioTemp(
+      BDid: usuario.BDid,
+      idProf: usuario.idProf,
+      nombre: usuario.nombre,
+  );
+}
+
+Insertable<MoorUsuarioData> usuarioToInsertableMoorUsuario (UsuarioTemp usuario){
+  return MoorUsuarioCompanion.insert(
+    idProf: usuario.idProf ?? 0,
+    nombre: usuario.nombre ?? '',
+  );
+}
+
