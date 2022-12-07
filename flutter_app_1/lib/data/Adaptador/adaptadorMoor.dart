@@ -9,6 +9,14 @@ import 'package:flutter_pantalla_1/modelos/fabricas/fabrica_profesor.dart';
 import '../../modelos/curso/curso.dart';
 import '../../modelos/profesor/profesor.dart';
 
+/*
+  Dataso para quien use este adapter xd
+  idealmente solo tienes q usar los metodos init, close, fabrica, ambos GuardarTodos, getCursos y getUsuarios
+  el init y el close son como para iniciar y cerrar la base asi q asumo q hay q usarlos al principio y al final de en lo q lo uses
+  para los guardar, hay q pasarle un objeto de tipo CursoTempp o UsuarioTemp, no pude hacer convertidores por los Value Objects
+  y los gets te va a devolver directamente el array de cursos y el array de usuarios
+ */
+
 class AdaptadorMoor implements IRepositorioMoor{
   late CorsiDataBase corsiDataBase;
   late CursoDao cursoDao;
@@ -100,7 +108,6 @@ class AdaptadorMoor implements IRepositorioMoor{
       profesoresAgg?.add(profesor);
     };
     for(int i = 0; i < cursosBD.length; i++){
-
       Curso curso = fabricaCurso.reconstruirCurso(
           cursosBD[i].idCurso.toString(),
           cursosBD[i].logo,
