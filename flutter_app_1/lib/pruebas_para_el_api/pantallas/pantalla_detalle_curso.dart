@@ -44,7 +44,8 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
   );
 }
 
-Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildContext context) {
+Widget body(String tituloCurso, String descripcionCurso, String profesor,
+    BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return SingleChildScrollView(
     child: Column(
@@ -65,19 +66,13 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildC
                 ),
                 child: Column(
                   children: <Widget>[
-                    Padding(
+                    Container(
                       padding: const EdgeInsets.only(
                         top: 120,
                         left: 20,
                         right: 20,
                       ),
-                      child: Text(
-                        descripcionCurso,
-                        style: Theme.of(context).textTheme.subtitle1,
-                        textAlign: TextAlign.justify,
-                      ),
                     ),
-                    leccionCurso(context),
                   ],
                 ),
               ),
@@ -96,17 +91,16 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, BuildC
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
-                    Row(
-                      children: <Widget>[                        
-                        const SizedBox(),
-                        Expanded(
-                          child: Image.asset(
-                            'assets/imgs/CursoSinFondo.png',
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                      ],
+                    Image.asset(
+                      'assets/imgs/CursoSinFondo.png',
+                      fit: BoxFit.fitHeight,
                     ),
+                    Text(
+                      descripcionCurso,
+                      style: Theme.of(context).textTheme.subtitle1,
+                      textAlign: TextAlign.justify,
+                    ),
+                    leccionCurso(context),
                   ],
                 ),
               ),
