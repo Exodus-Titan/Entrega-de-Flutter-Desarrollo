@@ -45,7 +45,7 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   void initState() {
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
       if (primerBoot) {
-        getStoredData();
+        getLocalStoredData();
         primerBoot = false;
       }
       if (await verificarConexionInternet()) {
@@ -81,7 +81,7 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     }
   }
 
-  getStoredData() async {
+  getLocalStoredData() async {
     iterableCursos =
         await servicio.getTodosLosCursosConProfesores(ApiBDRepository());
     if (iterableCursos != null) {

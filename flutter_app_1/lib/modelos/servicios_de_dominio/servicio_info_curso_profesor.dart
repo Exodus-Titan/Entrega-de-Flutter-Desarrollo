@@ -21,7 +21,9 @@ class ServicioInfoCursoProfesor {
     cursos = adaptadorCursoProfesor.getCursos();
     profesores = adaptadorCursoProfesor.getProfesores();
 
+    print(cursos!.length);
     for (int cont = 0; cont < cursos!.length; cont++) {
+      print('contador de get info: $cont');
       iterable.add(
         InfoCursoConProfesor(
           idCurso: IdCurso(id: cursos[cont].getId()),

@@ -24,8 +24,8 @@ class ServicioGuardarInfoCursoProfesorDB {
     // for (int cont = 0; cont < cursos.cantidadElementos(); cont++)
     int cont = 0;
     while (cursos.hasMore()) {
+      print('contador de guardar cursos: $cont');
       cont++;
-      print(cont);
       InfoCursoConProfesor curso = cursos.getNext();
       cursosTemp.add(
         CursoTemp(
@@ -45,11 +45,10 @@ class ServicioGuardarInfoCursoProfesorDB {
       IteradorLista<InfoCursoConProfesor> profesores) {
     List<UsuarioTemp> usuariosTemp = [];
     int cont = 0;
-
     // for (int cont = 0; cont < profesores.cantidadElementos(); cont++)
     while (profesores.hasMore()) {
+      print('contador de guardar profesores: $cont');
       cont++;
-      print(cont);
       InfoCursoConProfesor profesor = profesores.getNext();
       usuariosTemp.add(
         UsuarioTemp(
