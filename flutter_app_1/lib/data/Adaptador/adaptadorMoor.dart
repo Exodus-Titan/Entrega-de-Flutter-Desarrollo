@@ -6,8 +6,8 @@ import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
 import 'package:flutter_pantalla_1/data/moor/moor_db.dart';
 import 'package:flutter_pantalla_1/modelos/fabricas/fabrica_curso.dart';
 import 'package:flutter_pantalla_1/modelos/fabricas/fabrica_profesor.dart';
-import '../../modelos/curso/curso.dart';
-import '../../modelos/profesor/profesor.dart';
+import '../../modelos/agregados/curso/curso.dart';
+import '../../modelos/agregados/profesor/profesor.dart';
 
 /*
   Dataso para quien use este adapter xd

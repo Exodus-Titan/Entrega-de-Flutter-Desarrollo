@@ -1,9 +1,7 @@
 import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
 import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
-import 'package:flutter_pantalla_1/data/ModeloTamporal/leccionTemporal.dart';
-
-import '../../modelos/curso/curso.dart';
-import '../../modelos/profesor/profesor.dart';
+import '../../modelos/agregados/curso/curso.dart';
+import '../../modelos/agregados/profesor/profesor.dart';
 
 abstract class IRepositorioMoor {
   Future init();

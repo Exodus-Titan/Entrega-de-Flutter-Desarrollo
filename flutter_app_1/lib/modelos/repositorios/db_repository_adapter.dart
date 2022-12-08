@@ -2,10 +2,10 @@ import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
 import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
 import '../../data/Adaptador/adaptadorMoor.dart';
 import 'i_repositorio_curso_profesor.dart';
-import '../../modelos/curso/curso.dart';
-import '../../modelos/fabricas/fabrica_curso.dart';
-import '../../modelos/fabricas/fabrica_profesor.dart';
-import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
+import '../agregados/curso/curso.dart';
+import '../fabricas/fabrica_curso.dart';
+import '../fabricas/fabrica_profesor.dart';
+import 'package:flutter_pantalla_1/modelos/agregados/profesor/profesor.dart';
 
 class ApiBDRepository extends IRepositorioCursoProfesor {
   FabricaCurso fabricaCurso = FabricaCurso();

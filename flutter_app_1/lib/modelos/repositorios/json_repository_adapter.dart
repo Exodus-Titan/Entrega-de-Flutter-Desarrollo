@@ -1,9 +1,9 @@
-import 'package:flutter_pantalla_1/modelos/profesor/profesor.dart';
+import 'package:flutter_pantalla_1/modelos/agregados/profesor/profesor.dart';
 import '../../API/Dtos/curso_dto.dart';
 import 'package:flutter_pantalla_1/API/api.dart';
-import '../../modelos/curso/curso.dart';
-import '../../modelos/fabricas/fabrica_curso.dart';
-import '../../modelos/fabricas/fabrica_profesor.dart';
+import '../agregados/curso/curso.dart';
+import '../fabricas/fabrica_curso.dart';
+import '../fabricas/fabrica_profesor.dart';
 import 'i_repositorio_curso_profesor.dart';
 
 class ApiJsonRepository implements IRepositorioCursoProfesor {

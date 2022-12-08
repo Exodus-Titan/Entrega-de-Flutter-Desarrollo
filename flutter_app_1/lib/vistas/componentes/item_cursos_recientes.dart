@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
@@ -9,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<bool> getdata(String idCurso) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   bool b = (preferences.get('idCurso$idCurso') ?? false) as bool;
-  // print('Get-$idCurso - booleano-$b');
   return b;
 }
 

@@ -1,5 +1,5 @@
-import '../../modelos/curso/curso.dart';
-import '../../modelos/profesor/profesor.dart';
+import '../agregados/curso/curso.dart';
+import '../agregados/profesor/profesor.dart';
 
 abstract class IRepositorioCursoProfesor {
   Future getData();

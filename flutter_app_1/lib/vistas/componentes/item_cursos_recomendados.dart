@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
-
 import 'like_curso.dart';
 
 class ItemCursosRecomendados extends StatefulWidget {

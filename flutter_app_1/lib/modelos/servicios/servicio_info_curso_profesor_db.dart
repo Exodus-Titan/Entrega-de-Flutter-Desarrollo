@@ -1,5 +1,4 @@
 import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
-
 import '../parameters_objects/info_curso_con_profesor.dart';
 import '../patron_iterador/iterado_generico/iterable_lista.dart';
 import '../../data/Adaptador/I_Repositoty_BD.dart';
@@ -21,10 +20,8 @@ class ServicioGuardarInfoCursoProfesorDB {
 
   List<CursoTemp> traducirCursos(IteradorLista<InfoCursoConProfesor> cursos) {
     List<CursoTemp> cursosTemp = [];
-    // for (int cont = 0; cont < cursos.cantidadElementos(); cont++)
     int cont = 0;
     while (cursos.hasMore()) {
-      print('contador de guardar cursos: $cont');
       cont++;
       InfoCursoConProfesor curso = cursos.getNext();
       cursosTemp.add(
@@ -45,9 +42,7 @@ class ServicioGuardarInfoCursoProfesorDB {
       IteradorLista<InfoCursoConProfesor> profesores) {
     List<UsuarioTemp> usuariosTemp = [];
     int cont = 0;
-    // for (int cont = 0; cont < profesores.cantidadElementos(); cont++)
     while (profesores.hasMore()) {
-      print('contador de guardar profesores: $cont');
       cont++;
       InfoCursoConProfesor profesor = profesores.getNext();
       usuariosTemp.add(
