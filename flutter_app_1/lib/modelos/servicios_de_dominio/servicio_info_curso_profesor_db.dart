@@ -24,6 +24,7 @@ class ServicioGuardarInfoCursoProfesorDB {
     // for (int cont = 0; cont < cursos.cantidadElementos(); cont++)
     int cont = 0;
     while (cursos.hasMore()) {
+      cont++;
       print(cont);
       InfoCursoConProfesor curso = cursos.getNext();
       cursosTemp.add(
@@ -47,6 +48,7 @@ class ServicioGuardarInfoCursoProfesorDB {
 
     // for (int cont = 0; cont < profesores.cantidadElementos(); cont++)
     while (profesores.hasMore()) {
+      cont++;
       print(cont);
       InfoCursoConProfesor profesor = profesores.getNext();
       usuariosTemp.add(
