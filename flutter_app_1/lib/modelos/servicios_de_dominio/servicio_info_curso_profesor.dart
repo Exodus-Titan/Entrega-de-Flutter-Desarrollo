@@ -8,7 +8,7 @@ import '../curso/titulo_curso.dart';
 import '../profesor/nombre_profesor.dart';
 import '../parameters_objects/info_curso_con_profesor.dart';
 import '../patron_iterador/iterado_generico/iterable_lista.dart';
-import '../../pruebas_para_el_api/repositorios_api/i_repositorio_curso_profesor.dart';
+import '../../vistas/repositorios_api/i_repositorio_curso_profesor.dart';
 
 class ServicioInfoCursoProfesor {
   Future<IterableLista<InfoCursoConProfesor>> getTodosLosCursosConProfesores(

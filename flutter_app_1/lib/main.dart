@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_pantalla_1/pantallas/pantalla_cursos.dart';
-import 'package:flutter_pantalla_1/pruebas_para_el_api/pantallas/pantalla_cursos.dart';
+import 'package:flutter_pantalla_1/vistas/pantallas/pantalla_cursos.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_pantalla_1/pruebas_para_el_api/pruebas_api.dart';
 // import 'package:flutter_pantalla_1/pantallas/pantalla_detalle_curso.dart';

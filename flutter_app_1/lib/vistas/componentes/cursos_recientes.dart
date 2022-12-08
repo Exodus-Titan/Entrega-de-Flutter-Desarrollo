@@ -10,7 +10,7 @@ import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../repositorios_api/json_repository_adapter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import '../../pruebas_para_el_api/repositorios_api/db_repository_adapter.dart';
+import '../../vistas/repositorios_api/db_repository_adapter.dart';
 import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor_db.dart';
 import '../../data/Adaptador/adaptadorMoor.dart';
 
