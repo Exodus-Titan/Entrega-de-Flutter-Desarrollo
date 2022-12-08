@@ -5,7 +5,7 @@ import 'package:like_button/like_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Widget like(String idCurso, Future<bool> meGusta) {
-  print('booleano-like-$meGusta');
+  // print('booleano-like-$meGusta');
   return LikeButton(
     size: 40,
     onTap: ((meGusta) async {
@@ -25,7 +25,7 @@ Widget like(String idCurso, Future<bool> meGusta) {
 Future<bool> changedata(String idCurso, bool status) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   preferences.setBool('idCurso$idCurso', !status);
-  print('Guardar-$idCurso - ${!status}');
+  // print('Guardar-$idCurso - ${!status}');
   return Future.value(!status);
 }
 

@@ -21,7 +21,10 @@ class ServicioGuardarInfoCursoProfesorDB {
 
   List<CursoTemp> traducirCursos(IteradorLista<InfoCursoConProfesor> cursos) {
     List<CursoTemp> cursosTemp = [];
-    for (int cont = 0; cont < cursos.cantidadElementos(); cont++) {
+    // for (int cont = 0; cont < cursos.cantidadElementos(); cont++)
+    int cont = 0;
+    while (cursos.hasMore()) {
+      print(cont);
       InfoCursoConProfesor curso = cursos.getNext();
       cursosTemp.add(
         CursoTemp(
@@ -40,7 +43,11 @@ class ServicioGuardarInfoCursoProfesorDB {
   List<UsuarioTemp> traducirProfesores(
       IteradorLista<InfoCursoConProfesor> profesores) {
     List<UsuarioTemp> usuariosTemp = [];
-    for (int cont = 0; cont < profesores.cantidadElementos(); cont++) {
+    int cont = 0;
+
+    // for (int cont = 0; cont < profesores.cantidadElementos(); cont++)
+    while (profesores.hasMore()) {
+      print(cont);
       InfoCursoConProfesor profesor = profesores.getNext();
       usuariosTemp.add(
         UsuarioTemp(
