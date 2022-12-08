@@ -33,6 +33,10 @@ class InfoCursoConProfesor {
     return descripcionCurso.getDescripcion();
   }
 
+  String getIdProfesor() {
+    return idProfesor.getId();
+  }
+
   String getNombreProfesor() {
     return nombreProfesor.getNombre();
   }

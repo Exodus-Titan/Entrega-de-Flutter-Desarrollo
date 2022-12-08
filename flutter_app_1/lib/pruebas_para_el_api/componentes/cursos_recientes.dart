@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'item_cursos_recientes.dart';
@@ -11,6 +10,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../repositorios_api/json_repository_adapter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import '../../pruebas_para_el_api/repositorios_api/db_repository_adapter.dart';
+import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor_db.dart';
+import '../../data/Adaptador/adaptadorMoor.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
   const CarouselCursosRecientes({Key? key}) : super(key: key);
@@ -22,6 +23,8 @@ class CarouselCursosRecientes extends StatefulWidget {
 
 class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   ServicioInfoCursoProfesor servicio = ServicioInfoCursoProfesor();
+  ServicioGuardarInfoCursoProfesorDB servicioGuardarLocal =
+      ServicioGuardarInfoCursoProfesorDB();
   IterableLista<InfoCursoConProfesor>? iterableCursos;
   IteradorLista<InfoCursoConProfesor>? iteradorCursos;
   int elementosIterador = 0;
@@ -52,6 +55,7 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
           ),
         );
         await getApiData();
+        await storeDataLocal();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -83,6 +87,11 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     if (iterableCursos != null) {
       prepareData();
     }
+  }
+
+  storeDataLocal() async {
+    await servicioGuardarLocal.guardarTodosLosCursosConProfesores(
+        AdaptadorMoor(), iterableCursos);
   }
 
   prepareData() {
