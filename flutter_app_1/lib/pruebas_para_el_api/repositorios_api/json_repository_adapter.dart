@@ -19,7 +19,7 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
     fabrica();
   }
 
-  List<Curso>? fabrica() {
+  void fabrica() {
     cursosAgg = [];
     profesoresAgg = [];
     for (int cont = 0; cont < cursos!.length; cont++) {
@@ -36,7 +36,6 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
         ),
       );
     }
-    return cursosAgg;
   }
 
   @override

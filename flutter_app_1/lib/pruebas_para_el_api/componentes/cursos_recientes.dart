@@ -10,6 +10,7 @@ import '../../modelos/servicios_de_dominio/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../repositorios_api/json_repository_adapter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import '../../pruebas_para_el_api/repositorios_api/db_repository_adapter.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
   const CarouselCursosRecientes({Key? key}) : super(key: key);
@@ -26,8 +27,9 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   int elementosIterador = 0;
   var isLoaded = false;
   late StreamSubscription subscription;
+  bool primerBoot = true;
 
-  Future<bool> verificarConexion() async {
+  Future<bool> verificarConexionInternet() async {
     var result = await Connectivity().checkConnectivity();
     if ((result == ConnectivityResult.mobile) ||
         (result == ConnectivityResult.wifi)) {
@@ -38,16 +40,18 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
 
   @override
   void initState() {
-    verificarConexion();
-
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
-      if (await verificarConexion()) {
+      if (primerBoot) {
+        getStoredData();
+        primerBoot = false;
+      }
+      if (await verificarConexionInternet()) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Conexión a internet establecida'),
           ),
         );
-        await getData();
+        await getApiData();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -57,7 +61,6 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
       }
     });
     super.initState();
-    // getData();
   }
 
   @override
@@ -66,16 +69,28 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     super.dispose();
   }
 
-  getData() async {
+  getApiData() async {
     iterableCursos =
         await servicio.getTodosLosCursosConProfesores(ApiJsonRepository());
     if (iterableCursos != null) {
-      iteradorCursos = iterableCursos!.crearIterador();
-      elementosIterador = iteradorCursos!.cantidadElementos();
-      setState(() {
-        isLoaded = true;
-      });
+      prepareData();
     }
+  }
+
+  getStoredData() async {
+    iterableCursos =
+        await servicio.getTodosLosCursosConProfesores(ApiBDRepository());
+    if (iterableCursos != null) {
+      prepareData();
+    }
+  }
+
+  prepareData() {
+    iteradorCursos = iterableCursos!.crearIterador();
+    elementosIterador = iteradorCursos!.cantidadElementos();
+    setState(() {
+      isLoaded = true;
+    });
   }
 
   @override
