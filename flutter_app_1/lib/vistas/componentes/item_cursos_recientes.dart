@@ -12,20 +12,31 @@ Future<bool> getdata(String idCurso) async {
 
 Widget itemCursosRecientes(InfoCursoConProfesor? info, context) {
   return GestureDetector(
-    onTap: widgetOnTap(info!.getIdCurso(), info.getTituloCurso(),
-        info.getNombreProfesor(), info.getDescripcionCurso(), context),
-    child: itemCursoReciente(info.getIdCurso(), info.getTituloCurso(),
-        info.getNombreProfesor(), info.getDescripcionCurso(), context),
+    onTap: widgetOnTap(
+        info!.getIdCurso(),
+        info.getTituloCurso(),
+        info.getNombreProfesor(),
+        info.getDescripcionCurso(),
+        info.getLogoCurso(),
+        context),
+    child: itemCursoReciente(
+        info.getIdCurso(),
+        info.getTituloCurso(),
+        info.getNombreProfesor(),
+        info.getDescripcionCurso(),
+        info.getLogoCurso(),
+        context),
   );
 }
 
 widgetOnTap(String idCurso, String titulo, String profesor, String descripcion,
-    BuildContext context) {
+    String logoCurso, BuildContext context) {
   return (() => {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return PantallaDetalleCurso(titulo, descripcion, profesor);
+              return PantallaDetalleCurso(
+                  titulo, descripcion, profesor, logoCurso);
             },
           ),
         )
@@ -33,7 +44,7 @@ widgetOnTap(String idCurso, String titulo, String profesor, String descripcion,
 }
 
 Widget itemCursoReciente(String idCurso, String titulo, String profesor,
-    String descripcion, BuildContext context) {
+    String descripcion, String logoCurso, BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
     child: Container(
@@ -48,7 +59,7 @@ Widget itemCursoReciente(String idCurso, String titulo, String profesor,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                cursoLogo(),
+                cursoLogo(logoCurso),
                 like(
                     idCurso,
                     getdata(
@@ -78,7 +89,7 @@ BoxDecoration boxDecoration(context) {
   );
 }
 
-Widget cursoLogo() {
+Widget cursoLogo(String logoCurso) {
   return Container(
     decoration: BoxDecoration(
       color: Colors.white,
@@ -86,10 +97,11 @@ Widget cursoLogo() {
     ),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
-      child: Image.asset(
-        'assets/imgs/CursoUX.png', //this.curso.logoCurso
-        width: 130.0,
-      ),
+      child: Image.network(logoCurso, width: 130.0),
+      // Image.asset(
+      //   'assets/imgs/CursoUX.png', //this.curso.logoCurso
+      //   width: 130.0,
+      // ),
     ),
   );
 }

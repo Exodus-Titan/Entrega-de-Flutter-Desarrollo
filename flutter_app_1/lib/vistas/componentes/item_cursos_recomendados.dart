@@ -18,7 +18,10 @@ class _ItemCursosRecomendadosState extends State<ItemCursosRecomendados> {
           MaterialPageRoute(
             builder: (BuildContext context) {
               return const PantallaDetalleCurso(
-                  '[Curso]', '[Descripcion del curso]', '');
+                  '[Curso]',
+                  '[Descripcion del curso]',
+                  '',
+                  'https://www.formatemultiverse.com/wp-content/uploads/2020/04/clases-online.png');
             },
           ),
         );

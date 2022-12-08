@@ -5,8 +5,9 @@ class PantallaDetalleCurso extends StatelessWidget {
   final String tituloCurso;
   final String descripcionCurso;
   final String profesor;
+  final String logoCurso;
   const PantallaDetalleCurso(
-      this.tituloCurso, this.descripcionCurso, this.profesor,
+      this.tituloCurso, this.descripcionCurso, this.profesor, this.logoCurso,
       {Key? key})
       : super(key: key);
 
@@ -19,7 +20,7 @@ class PantallaDetalleCurso extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            body(tituloCurso, descripcionCurso, profesor, context),
+            body(tituloCurso, descripcionCurso, profesor, logoCurso, context),
           ],
         ),
       ),
@@ -45,7 +46,7 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
 }
 
 Widget body(String tituloCurso, String descripcionCurso, String profesor,
-    BuildContext context) {
+    String logoCurso, BuildContext context) {
   Size size = MediaQuery.of(context).size;
   return SingleChildScrollView(
     child: Column(
@@ -66,7 +67,8 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12, top: 10.0, bottom: 10.0),
+                padding: const EdgeInsets.only(
+                    left: 12, right: 12, top: 10.0, bottom: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -80,10 +82,11 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
-                    Image.asset(
-                      'assets/imgs/CursoSinFondo.png',
-                      fit: BoxFit.fitHeight,
-                    ),
+                    Image.network(logoCurso),
+                    // Image.asset(
+                    //   'assets/imgs/CursoSinFondo.png',
+                    //   fit: BoxFit.fitHeight,
+                    // ),
                     Text(
                       descripcionCurso,
                       style: Theme.of(context).textTheme.subtitle1,
@@ -106,8 +109,7 @@ Widget leccionCurso(context) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Padding(
-        padding: const EdgeInsets.only(
-          top: 30.0, bottom: 5.0),
+        padding: const EdgeInsets.only(top: 30.0, bottom: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,

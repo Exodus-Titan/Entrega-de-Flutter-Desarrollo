@@ -25,6 +25,10 @@ class InfoCursoConProfesor {
     return idCurso.getId();
   }
 
+  String getLogoCurso() {
+    return logoCurso.getLogo();
+  }
+
   String getTituloCurso() {
     return tituloCurso.getTitulo();
   }
