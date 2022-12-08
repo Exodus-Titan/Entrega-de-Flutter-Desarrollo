@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'item_cursos_recientes.dart';
 import '../../modelos/parameters_objects/info_curso_con_profesor.dart';
 import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
@@ -43,10 +44,12 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
 
   @override
   void initState() {
+    cargarPreferencias();
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
       if (primerBoot) {
         getLocalStoredData();
         primerBoot = false;
+        guardarPreferencias();
       }
       if (await verificarConexionInternet()) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -99,6 +102,20 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     elementosIterador = iteradorCursos!.cantidadElementos();
     setState(() {
       isLoaded = true;
+    });
+  }
+
+  guardarPreferencias() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setBool('primerBoot', primerBoot);
+    });
+  }
+
+  cargarPreferencias() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      primerBoot = preferences.getBool('primerBoot') ?? true;
     });
   }
 
