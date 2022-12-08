@@ -12,12 +12,10 @@ class ServicioGuardarInfoCursoProfesorDB {
       IterableLista<InfoCursoConProfesor>? datos) async {
     IteradorLista<InfoCursoConProfesor> iteradorDatos = datos!.crearIterador();
     await adaptadorCursoProfesor.init();
-    while (iteradorDatos.hasMore()) {
-      adaptadorCursoProfesor
-          .guardarTodosLosCursos(traducirCursos(iteradorDatos));
-      adaptadorCursoProfesor
-          .guardarTodosLosUsuarios(traducirProfesores(iteradorDatos));
-    }
+    adaptadorCursoProfesor.guardarTodosLosCursos(traducirCursos(iteradorDatos));
+    iteradorDatos.resetPosicionInicial();
+    adaptadorCursoProfesor
+        .guardarTodosLosUsuarios(traducirProfesores(iteradorDatos));
     adaptadorCursoProfesor.close();
   }
 
