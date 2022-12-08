@@ -31,7 +31,6 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   int elementosIterador = 0;
   var isLoaded = false;
   late StreamSubscription subscription;
-  bool primerBoot = true;
 
   Future<bool> verificarConexionInternet() async {
     var result = await Connectivity().checkConnectivity();
@@ -44,13 +43,8 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
 
   @override
   void initState() {
-    cargarPreferencias();
+    getLocalStoredData();
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
-      if (primerBoot) {
-        getLocalStoredData();
-        primerBoot = false;
-        guardarPreferencias();
-      }
       if (await verificarConexionInternet()) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -102,20 +96,6 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
     elementosIterador = iteradorCursos!.cantidadElementos();
     setState(() {
       isLoaded = true;
-    });
-  }
-
-  guardarPreferencias() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      preferences.setBool('primerBoot', primerBoot);
-    });
-  }
-
-  cargarPreferencias() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      primerBoot = preferences.getBool('primerBoot') ?? true;
     });
   }
 
