@@ -720,11 +720,10 @@ class MoorUsuarioCompanion extends UpdateCompanion<MoorUsuarioData> {
     this.nombreProf = const Value.absent(),
   });
   MoorUsuarioCompanion.insert({
-    required int BDid,
+    this.BDid = const Value.absent(),
     required int idProf,
     required String nombreProf,
-  })  : BDid = Value(BDid),
-        idProf = Value(idProf),
+  })  : idProf = Value(idProf),
         nombreProf = Value(nombreProf);
   static Insertable<MoorUsuarioData> custom({
     Expression<int>? BDid,
@@ -784,15 +783,13 @@ class $MoorUsuarioTable extends MoorUsuario
   late final GeneratedColumn<int?> BDid = GeneratedColumn<int?>(
       'b_did', aliasedName, false,
       type: const IntType(),
-      requiredDuringInsert: true,
+      requiredDuringInsert: false,
       defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
   final VerificationMeta _idProfMeta = const VerificationMeta('idProf');
   @override
   late final GeneratedColumn<int?> idProf = GeneratedColumn<int?>(
       'id_prof', aliasedName, false,
-      type: const IntType(),
-      requiredDuringInsert: true,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
+      type: const IntType(), requiredDuringInsert: true);
   final VerificationMeta _nombreProfMeta = const VerificationMeta('nombreProf');
   @override
   late final GeneratedColumn<String?> nombreProf = GeneratedColumn<String?>(
@@ -812,8 +809,6 @@ class $MoorUsuarioTable extends MoorUsuario
     if (data.containsKey('b_did')) {
       context.handle(
           _BDidMeta, BDid.isAcceptableOrUnknown(data['b_did']!, _BDidMeta));
-    } else if (isInserting) {
-      context.missing(_BDidMeta);
     }
     if (data.containsKey('id_prof')) {
       context.handle(_idProfMeta,
@@ -833,7 +828,7 @@ class $MoorUsuarioTable extends MoorUsuario
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {BDid, idProf};
+  Set<GeneratedColumn> get $primaryKey => {BDid};
   @override
   MoorUsuarioData map(Map<String, dynamic> data, {String? tablePrefix}) {
     return MoorUsuarioData.fromData(data, attachedDatabase,

@@ -27,7 +27,7 @@ class MoorLeccion extends Table{
 
 class MoorUsuario extends Table{
   IntColumn get BDid => integer().autoIncrement()();
-  IntColumn get idProf => integer().autoIncrement()();
+  IntColumn get idProf => integer()();
   TextColumn get nombreProf => text()();
 }
 
@@ -149,7 +149,6 @@ UsuarioTemp moorUsuarioToUsuario(MoorUsuarioData usuario) {
 
 Insertable<MoorUsuarioData> usuarioToInsertableMoorUsuario (UsuarioTemp usuario){
   return MoorUsuarioCompanion.insert(
-    BDid: usuario.BDid,
     idProf: usuario.idProf ?? 0,
     nombreProf: usuario.nombre ?? '',
   );

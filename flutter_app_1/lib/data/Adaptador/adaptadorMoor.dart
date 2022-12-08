@@ -29,6 +29,7 @@ class AdaptadorMoor implements IRepositorioMoor {
 
   @override
   Future init() async {
+    corsiDataBase = CorsiDataBase();
     cursoDao = corsiDataBase.cursoDao;
     //leccionDao = corsiDataBase.leccionDao;
     usuarioDao = corsiDataBase.usuarioDao;
