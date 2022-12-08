@@ -24,14 +24,15 @@ class ServicioGuardarInfoCursoProfesorDB {
   List<CursoTemp> traducirCursos(IteradorLista<InfoCursoConProfesor> cursos) {
     List<CursoTemp> cursosTemp = [];
     for (int cont = 0; cont < cursos.cantidadElementos(); cont++) {
+      InfoCursoConProfesor curso = cursos.getNext();
       cursosTemp.add(
         CursoTemp(
           BDid: cont,
-          idCurso: int.parse(cursos.getNext().idCurso.getId()),
-          logo: cursos.getNext().logoCurso.getLogo(),
-          titulo: cursos.getNext().tituloCurso.getTitulo(),
-          descripcion: cursos.getNext().descripcionCurso.getDescripcion(),
-          idProf: int.parse(cursos.getNext().idProfesor.getId()),
+          idCurso: int.parse(curso.idCurso.getId()),
+          logo: curso.logoCurso.getLogo(),
+          titulo: curso.tituloCurso.getTitulo(),
+          descripcion: curso.descripcionCurso.getDescripcion(),
+          idProf: int.parse(curso.idProfesor.getId()),
         ),
       );
     }
@@ -42,11 +43,12 @@ class ServicioGuardarInfoCursoProfesorDB {
       IteradorLista<InfoCursoConProfesor> profesores) {
     List<UsuarioTemp> usuariosTemp = [];
     for (int cont = 0; cont < profesores.cantidadElementos(); cont++) {
+      InfoCursoConProfesor profesor = profesores.getNext();
       usuariosTemp.add(
         UsuarioTemp(
           BDid: cont,
-          idProf: int.parse(profesores.getNext().getIdProfesor()),
-          nombre: profesores.getNext().getNombreProfesor(),
+          idProf: int.parse(profesor.getIdProfesor()),
+          nombre: profesor.getNombreProfesor(),
         ),
       );
     }
